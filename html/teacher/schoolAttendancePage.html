@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Class Attendance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+<!-- NAVBAR -->
+<header class="bg-slate-700 text-white px-6 py-4 flex justify-between items-center">
+  <div class="text-xl font-bold text-orange-300">Logo</div>
+  <nav class="flex gap-6 items-center">
+    <a href="#" class="font-medium">Dashboard</a>
+    <a href="#" class="text-orange-300 font-medium">Events</a>
+    <a href="#">Profile</a>
+    <button class="bg-orange-400 px-4 py-2 rounded text-white">Sign Out</button>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main class="p-6 grid grid-cols-12 gap-6">
+
+  <!-- LEFT -->
+  <section class="col-span-8 bg-white rounded-xl p-6 shadow">
+    <h1 class="text-3xl font-bold mb-2">Class Attendance</h1>
+    <p class="text-gray-500 mb-4">Time 9:00AM - 10:00AM</p>
+
+    <!-- ACTION BAR -->
+    <div class="flex justify-between items-center mb-4">
+      <input
+        type="text"
+        placeholder="Search"
+        class="border rounded-lg px-4 py-2 w-64"
+      />
+
+      <div class="flex gap-3">
+        <button id="markAllPresent" class="bg-orange-400 text-white px-4 py-2 rounded-lg">
+          Mark all presents
+        </button>
+        <button id="resetAll" class="bg-slate-600 text-white px-4 py-2 rounded-lg">
+          Reset all
+        </button>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="border rounded-lg overflow-hidden">
+      <div class="max-h-[420px] overflow-y-auto">
+        <table class="w-full border-collapse">
+          <thead class="sticky top-0 bg-gray-100 z-10">
+            <tr class="text-left text-sm font-semibold">
+              <th class="p-3 w-12">#</th>
+              <th class="p-3">Student Name</th>
+              <th class="p-3">Student ID</th>
+              <th class="p-3">Status</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT -->
+  <aside class="col-span-4 bg-slate-700 text-white rounded-xl p-6 shadow">
+
+    <h2 class="text-xl font-bold text-orange-300 mb-4">Attendance History</h2>
+
+    <!-- DATE PICKER -->
+    <label class="block mb-2 text-sm">Select a date</label>
+    <input
+      type="date"
+      id="attendanceDate"
+      class="w-full px-4 py-2 rounded-lg text-gray-800 mb-6"
+    />
+
+    <!-- SUMMARY -->
+    <h3 class="font-semibold mb-3">Summary</h3>
+    <div class="flex gap-4 mb-6">
+      <div class="bg-white text-gray-800 rounded-lg p-4 flex-1 text-center">
+        <p id="presentPercent" class="text-2xl font-bold text-green-600">0%</p>
+        <p class="text-sm">Presents</p>
+      </div>
+      <div class="bg-orange-400 rounded-lg p-4 flex-1 text-center">
+        <p id="absentCount" class="text-2xl font-bold">0</p>
+        <p class="text-sm">Absent</p>
+      </div>
+    </div>
+
+    <!-- DETAIL -->
+    <h3 class="font-semibold mb-3">Detail</h3>
+    <div id="detailList" class="space-y-3"></div>
+
+  </aside>
+</main>
+
+<script>
+/* ---------------- DATA ---------------- */
+const students = [
+  { id: "000001", name: "Thoug Socheata" },
+  { id: "000002", name: "So Channolly" },
+  { id: "000003", name: "Sarin Meassochan" },
+  { id: "000004", name: "Kan Menglay" },
+  { id: "000005", name: "Kim Tech" },
+  { id: "000006", name: "Bon Sak" },
+  { id: "000007", name: "Phea Sreynith" },
+];
+
+const STATUS = ["Present", "Absent", "Late", "Excused"];
+let attendanceData = JSON.parse(localStorage.getItem("attendance")) || {};
+let selectedDate = new Date().toISOString().split("T")[0];
+
+/* ---------------- INIT ---------------- */
+document.getElementById("attendanceDate").value = selectedDate;
+renderTable();
+loadDate(selectedDate);
+
+/* ---------------- FUNCTIONS ---------------- */
+function renderTable() {
+  const tbody = document.getElementById("studentTable");
+  tbody.innerHTML = "";
+
+  students.forEach((s, index) => {
+    const tr = document.createElement("tr");
+    tr.className = "border-b";
+
+    tr.innerHTML = `
+      <td class="p-3">${index + 1}</td>
+      <td class="p-3">${s.name}</td>
+      <td class="p-3">${s.id}</td>
+      <td class="p-3">
+        <div class="flex gap-2">
+          ${STATUS.map(status => `
+            <button
+              class="status-btn px-3 py-1 rounded-lg text-sm border"
+              data-id="${s.id}"
+              data-status="${status}"
+            >${status}</button>
+          `).join("")}
+        </div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function loadDate(date) {
+  selectedDate = date;
+  updateUI();
+}
+
+function saveStatus(studentId, status) {
+  attendanceData[selectedDate] ||= {};
+  attendanceData[selectedDate][studentId] = status;
+  localStorage.setItem("attendance", JSON.stringify(attendanceData));
+  updateUI();
+}
+
+function updateUI() {
+  const data = attendanceData[selectedDate] || {};
+
+  document.querySelectorAll(".status-btn").forEach(btn => {
+    btn.className = "status-btn px-3 py-1 rounded-lg text-sm border";
+    const id = btn.dataset.id;
+    const status = btn.dataset.status;
+
+    if (data[id] === status) {
+      if (status === "Present") btn.classList.add("bg-green-500","text-white");
+      if (status === "Absent") btn.classList.add("bg-red-500","text-white");
+      if (status === "Late") btn.classList.add("bg-yellow-400","text-white");
+      if (status === "Excused") btn.classList.add("bg-blue-500","text-white");
+    }
+  });
+
+  updateSummary();
+}
+
+function updateSummary() {
+  const data = attendanceData[selectedDate] || {};
+  const total = students.length;
+
+  let present = 0;
+  let absent = 0;
+
+  students.forEach(s => {
+    if (data[s.id] === "Present") present++;
+    if (data[s.id] === "Absent") absent++;
+  });
+
+  document.getElementById("presentPercent").innerText =
+    total ? Math.round((present / total) * 100) + "%" : "0%";
+  document.getElementById("absentCount").innerText = absent;
+
+  const detail = document.getElementById("detailList");
+  detail.innerHTML = "";
+
+  students.forEach(s => {
+    if (data[s.id]) {
+      detail.innerHTML += `
+        <div class="bg-white text-gray-800 rounded-lg px-4 py-2 flex justify-between items-center">
+          <span>${s.name}</span>
+          <span class="font-semibold">${data[s.id]}</span>
+        </div>
+      `;
+    }
+  });
+}
+
+/* ---------------- EVENTS ---------------- */
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("status-btn")) {
+    saveStatus(e.target.dataset.id, e.target.dataset.status);
+  }
+});
+
+document.getElementById("markAllPresent").onclick = () => {
+  attendanceData[selectedDate] = {};
+  students.forEach(s => attendanceData[selectedDate][s.id] = "Present");
+  localStorage.setItem("attendance", JSON.stringify(attendanceData));
+  updateUI();
+};
+
+document.getElementById("resetAll").onclick = () => {
+  attendanceData[selectedDate] = {};
+  localStorage.setItem("attendance", JSON.stringify(attendanceData));
+  updateUI();
+};
+
+document.getElementById("attendanceDate").onchange = e => {
+  loadDate(e.target.value);
+};
+</script>
+
+</body>
+</html>
