@@ -4,84 +4,76 @@
   <meta charset="UTF-8" />
   <title>Student Attendance Record</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-[#eeeeee] text-gray-800">
 
-<!-- NAVBAR -->
-<header class="bg-slate-700 text-white px-6 py-4 flex justify-between items-center">
-  <div class="flex items-center gap-4">
-    <span class="text-2xl">☰</span>
-    <span class="text-xl font-bold text-orange-300">Logo</span>
-  </div>
+<!-- NAVIGATION BAR -->
+    <nav class="bg-[#2A4759] w-full shadow-2xl">
+        <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
+        <div class="text-[#F79B72] font-bold text-4xl">logo</div>
+        <div class="flex gap-2">
+            <button class="border border-[#F79B72] w-24 h-8 rounded-lg text-[#F79B72] font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:border-none">Log in</button>
+            <button class="bg-[#F79B72] w-24 h-8 rounded-lg text-white font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">Sign in</button>
+            <!-- <button><img src="icon/account_circle_24dp_F79B72_FILL0_wght400_GRAD0_opsz24.svg" class="w-30 h-30" alt=""></button> -->
+        </div>
 
-  <nav class="flex items-center gap-6">
-    <a href="#" class="font-medium">Dashboard</a>
-    <a href="#" class="text-orange-300 font-semibold">Events</a>
-    <a href="#" class="font-medium">Profile</a>
-    <button class="bg-orange-400 px-4 py-2 rounded-lg text-white">
-      Sign Out
-    </button>
-    <div class="bg-orange-400 w-9 h-9 rounded-full flex items-center justify-center">
-      👤
-    </div>
-  </nav>
-</header>
+        </div>
+    </nav>
 
 <!-- MAIN -->
 <main class="max-w-7xl mx-auto p-6">
-
 <!-- HEADER -->
-<div class="flex justify-between items-center mb-6">
-  <h1 class="text-3xl font-bold">Student Attendance Record</h1>
-  <button class="bg-orange-300 px-5 py-3 rounded-lg text-white font-semibold flex items-center gap-2">
-    ⬇ Download Report
+<div class="flex justify-between items-center mb-6 mt-4">
+  <h1 class="text-4xl font-bold">Student Attendance Record</h1>
+  <button class="bg-[#F79B72] px-5 py-3 rounded-lg text-[#eeeeee] font-semibold flex items-center gap-2">
+    <i class="material-icons">download</i> 
+    <p>Download Report</p>
   </button>
 </div>
 
 <!-- FILTERS -->
 <section class="mb-6">
-  <h2 class="text-orange-400 font-semibold mb-3">Filters</h2>
+  <h2 class="text-[#F79B72] font-semibold mb-3 text-lg">Filters</h2>
 
-  <div class="bg-white p-6 rounded-xl shadow">
-    <div class="grid grid-cols-5 gap-4 items-end">
-
+  <div class="bg-white p-4 sm:p-6 rounded-xl shadow">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end">
+      
       <div>
-        <label class="block text-sm font-medium mb-1">Student ID</label>
-        <input class="w-full bg-gray-100 px-4 py-3 rounded-lg" value="Olivia Chen">
+        <label class="block text-sm font-semibold mb-2">Student ID</label>
+        <input
+          class="w-full bg-gray-100 px-4 py-3 rounded-lg"
+          value="STU123456"
+        />
       </div>
 
       <div>
-        <label class="block text-sm font-medium mb-1">Subject</label>
+        <label class="block text-sm font-semibold mb-2">Subject</label>
         <select class="w-full bg-gray-100 px-4 py-3 rounded-lg">
           <option>All Subjects</option>
         </select>
       </div>
 
       <div>
-        <label class="block text-sm font-medium mb-1">Month</label>
+        <label class="block text-sm font-semibold mb-2">Month</label>
         <select class="w-full bg-gray-100 px-4 py-3 rounded-lg">
           <option>October 2025</option>
         </select>
       </div>
 
-      <div>
-        <label class="block text-sm font-medium mb-1">Date Range</label>
-        <select class="w-full bg-gray-100 px-4 py-3 rounded-lg">
-          <option>10/01/24 - 10/31/24</option>
-        </select>
-      </div>
-
-      <button class="bg-slate-700 text-orange-300 px-6 py-3 rounded-lg font-semibold">
+      <button
+        class="w-full md:w-auto bg-[#2A4759] text-[#F79B72] px-6 py-3 rounded-lg font-semibold"
+      >
         Apply Filters
       </button>
+
     </div>
   </div>
 </section>
 
 <!-- SUMMARY CARDS -->
-<section class="grid grid-cols-5 gap-4 mb-6">
-
+<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
   <div class="bg-white p-5 rounded-xl shadow">
     <p class="text-sm mb-2">Overall Attendance</p>
     <p class="text-3xl font-bold text-blue-500">92%</p>
@@ -106,8 +98,8 @@
     <p class="text-sm mb-2">Excused Absents</p>
     <p class="text-3xl font-bold text-blue-500">1</p>
   </div>
-
 </section>
+
 
 <!-- CALENDAR -->
 <section class="bg-white rounded-xl shadow p-6">
