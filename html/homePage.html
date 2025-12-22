@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#FFFFFF] font-roboto min-h-screen flex flex-col">
@@ -184,7 +185,9 @@
             </div>
             <div class="flex items-center gap-2 font-semibold text-gray-900">
               28/30
-              <i class="material-icons text-green-500">person_check</i>
+              <span class="material-symbols-outlined text-green-500">
+                person_check
+              </span>
             </div>
           </div>
 
@@ -195,7 +198,7 @@
             </div>
             <div class="flex items-center gap-2 font-semibold text-gray-900">
               451/480
-              <span class="text-green-500">👥</span>
+              <i class="material-icons text-green-500">groups</i>
             </div>
           </div>
 
@@ -206,7 +209,9 @@
             </div>
             <div class="flex items-center gap-2 font-semibold text-gray-900">
               22/25
-              <span class="text-orange-400">👤</span>
+              <span class="material-symbols-outlined text-red-500">
+                person_alert
+              </span>
             </div>
           </div>
 
@@ -220,38 +225,62 @@
 <footer class=" bg-[#2A4759] text-white ">
     <div class="py-12 px-16 md:px-20 grid grid-cols-2 md:grid-cols-3 justify-items-center">
     <div>
-        <h1 class="font-bold pb-2 text-2xl">Attendance System</h1>
+        <h1 class="font-semibold pb-2 text-xl">Attendance System</h1>
         <p class="text-sm text-[#dddddd]">An efficient, reliable, and easy-to-use system for managing school and event attendance seamlessly.</p>
     </div>
     <div class="space-y-2">
-        <h1 class="font-bold">Contact Us</h1>
-        <div class="text-xs">
-            <i class="material-icons text-[#F79B72] text-xl leading-none ">phone_in_talk</i>
-            <span>+855 963 629 624</span>
+        <h1 class="font-semibold text-xl">Contact Us</h1>
+        <div class="space-y-2 text-xs">
+          <div class="flex items-center gap-2">
+            <i class="material-icons text-[#F79B72] text-lg">phone_in_talk</i>
+            <span class="text-sm text-[#dddddd]">+855 963 629 624</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <i class="material-icons text-[#F79B72] text-lg">telegram</i>
+            <span class="text-sm text-[#dddddd]">@n_nithhhh</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <i class="material-icons text-[#F79B72] text-lg">email</i>
+            <a
+              href="mailto:nith2403@gmail.com"
+              class="border-b border-transparent hover:border-white transition text-sm text-[#dddddd]">
+              nith2403@gmail.com
+            </a>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <i class="material-icons text-[#F79B72] text-lg">facebook</i>
+            <span class="text-sm text-[#dddddd]">nithh</span>
+          </div>
         </div>
-        <div class="text-xs">
-            <i class="material-icons text-[#F79B72] text-xl leading-none ">telegram</i>
-            <span>@n_nithhhh</span>
-        </div>
-        <div class="text-xs">
-            <i class="material-icons text-[#F79B72] text-xl leading-none ">email</i>
-            <a href="email" class="inline-block border-b border-white">nith2403@gmail.com</a>
-        </div>
-        <div class="text-xs">
-            <i class="material-icons text-[#F79B72] text-xl leading-none ">facebook</i>
-            <span>nithh</span>
-        </div>
-    
     </div>
+
     <div class="space-y-3 lg:mt-0 hidden md:block ">
-        <h1 class="font-bold">Start Now</h1>
-        <div class="mb-2">
-        <div>
-          <input type="email" id="email" placeholder="username@email.com" class="w-full h-8 border-gray-300 rounded-lg px-2 py-2 focus:outline-none focus:ring-2 focus:ring-[#F79B72]" required>
+        <h1 class="font-semibold text-xl">Start Now</h1>
+        <div class="mb-4 space-y-4">
+        <!-- Email input -->
+        <input
+          type="email"
+          id="email"
+          placeholder="username@email.com"
+          class="w-full h-12 border border-gray-300 rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-[#F79B72]">
+
+        <!-- Buttons -->
+        <div class="flex gap-4">
+          <button
+            class="border border-[#F79B72] w-28 h-10 rounded-lg text-[#F79B72] font-bold transition hover:bg-[#eeeeee] hover:border-transparent">
+            Log in
+          </button>
+
+          <button
+            class="bg-[#F79B72] w-28 h-10 rounded-lg text-white font-bold transition hover:bg-[#eeeeee] hover:text-[#F79B72]">
+            Sign in
+          </button>
         </div>
-        <button class="text-xs border border-[#F79B72] w-16 h-8 rounded-lg text-[#F79B72] font-bold mt-2 hover:bg-[#F79B72] hover:text-white">Log in</button>
-        <button class="text-xs bg-[#F79B72] w-20 h-8 rounded-lg text-white font-bold mt-2 hover:bg-white hover:text-black">Sign up</button>
-        </div>
+      </div>
+
     </div>
 </div>
 </footer>
