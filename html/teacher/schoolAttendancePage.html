@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Class Attendance</title>
+  <title>School Attendance</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 text-gray-800 min-h-screen">
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
     <nav class="bg-[#2A4759] w-full shadow-2xl">
         <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
         <div class="text-[#F79B72] font-bold text-4xl">logo</div>
@@ -21,76 +21,94 @@
         </div>
     </nav>
 
+<!-- ================= MAIN ================= -->
+<main class="max-w-[1440px] mx-auto p-6 grid grid-cols-12 gap-6">
 
-<!-- MAIN -->
-<main class="p-6 grid grid-cols-12 gap-6 mx-6">
-    
-  <!-- LEFT -->
-  <section class="col-span-8">
+  <!-- ================= LEFT ================= -->
+  <section class="col-span-12 lg:col-span-8">
+
     <!-- HEADER -->
-    <div>
-        <h1 class="text-4xl font-bold mb-2">Class Attendance</h1>
-        <p class="text-gray-500 mb-4">Time 9:00AM - 10:00AM</p>
-    </div>
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Class Attendance</h1>
+    <p class="text-gray-500 mb-6">
+      Time 9:00AM - 10:00AM |
+      Date <span id="currentDate"></span>
+    </p>
 
     <!-- ACTION BAR -->
-        <div class="flex justify-between items-center mb-4">
-        <input
-            type="text"
-            placeholder="Search"
-            class="border rounded-lg px-4 py-2 w-64"
-        />
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search"
+        class="border rounded-lg px-4 py-2 w-full md:w-64"
+      />
 
-        <div class="grid grid-cols-3 gap-3">
-            <button id="markAllPresent" class="bg-[#2A4759] text-[#F79B72] px-4 py-2 rounded-lg duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">
-            Mark all presents
-            </button>
-            <button id="resetAll" class="bg-[#2A4759] text-[#F79B72] px-4 py-2 rounded-lg duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">
-            Reset all
-            </button>
-            <button id="editModeBtn" class="bg-[#F79B72] text-white px-4 py-2 rounded-lg duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">
-              Edit Mode
-            </button>
-        </div>
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full md:w-auto">
+        <button id="markAll"
+          class="bg-[#2A4759] text-[#F79B72] px-4 py-2 rounded-lg hover:bg-[#eeeeee]">
+          Mark all present
+        </button>
+
+        <button id="resetAll"
+          class="bg-[#2A4759] text-[#F79B72] px-4 py-2 rounded-lg hover:bg-[#eeeeee]">
+          Reset all
+        </button>
+
+        <button id="editBtn"
+          class="bg-[#F79B72] text-white px-4 py-2 rounded-lg hover:bg-[#eeeeee] hover:text-[#F79B72]">
+          Edit Mode
+        </button>
+      </div>
+    </div>
+
     <!-- TABLE -->
-    <div class="border rounded-lg overflow-hidden col-span-8 bg-white rounded-xl p-6 shadow">
+    <div class="border rounded-xl overflow-hidden bg-white rounded-xl p-6 shadow">
       <div class="max-h-[420px] overflow-y-auto">
-        <table class="w-full border-collapse">
-          <thead class="sticky top-0 bg-gray-100 z-10 rounded-t-lg">
-            <tr class="text-left text-sm font-semibold">
+        <table class="w-full border-collapse text-sm">
+          <thead class="sticky top-0 bg-gray-100 z-10">
+            <tr class="font-semibold">
               <th class="p-3 w-12">#</th>
-              <th class="p-3">Student Name</th>
-              <th class="p-3">Student ID</th>
-              <th class="p-3">Status</th>
+              <th class="p-3 text-left">Student Name</th>
+              <th class="p-3 text-center">Student ID</th>
+              <th class="p-3 text-center">Status</th>
             </tr>
           </thead>
           <tbody id="studentTable"></tbody>
         </table>
+        <p id="noResult" class="hidden text-center p-4 text-gray-500">
+          No result found
+        </p>
       </div>
     </div>
+
+    <button id="submitBtn"
+      class="mt-6 bg-[#F79B72] text-white px-6 py-2 rounded-lg font-semibold">
+      Submit
+    </button>
   </section>
 
-  <!-- RIGHT -->
-  <aside class="col-span-4 bg-slate-700 text-white rounded-xl p-6 shadow">
+  <!-- ================= RIGHT ================= -->
+  <aside class="col-span-12 lg:col-span-4 bg-slate-700 text-white rounded-xl p-6 shadow">
 
     <h2 class="text-xl font-bold text-orange-300 mb-4">Attendance History</h2>
 
-    <!-- DATE PICKER -->
+    <!-- DATE -->
     <label class="block mb-2 text-sm">Select a date</label>
     <input
+      id="datePicker"
       type="date"
-      id="attendanceDate"
       class="w-full px-4 py-2 rounded-lg text-gray-800 mb-6"
     />
 
     <!-- SUMMARY -->
-    <h3 class="font-semibold mb-3">Summary</h3>
+    <p class="mb-3">Summary for <span id="summaryDate"></span></p>
+
     <div class="flex gap-4 mb-6">
       <div class="bg-white text-gray-800 rounded-lg p-4 flex-1 text-center">
         <p id="presentPercent" class="text-2xl font-bold text-green-600">0%</p>
         <p class="text-sm">Presents</p>
       </div>
+
       <div class="bg-orange-400 rounded-lg p-4 flex-1 text-center">
         <p id="absentCount" class="text-2xl font-bold">0</p>
         <p class="text-sm">Absent</p>
@@ -99,13 +117,14 @@
 
     <!-- DETAIL -->
     <h3 class="font-semibold mb-3">Detail</h3>
-    <div id="detailList" class="space-y-3"></div>
-
+    <div id="detailList" class="space-y-3 max-h-64 overflow-y-auto"></div>
   </aside>
+
 </main>
 
+<!-- ================= SCRIPT ================= -->
 <script>
-/* ---------------- DATA ---------------- */
+/* ---------- DATA ---------- */
 const students = [
   { id: "000001", name: "Thoug Socheata" },
   { id: "000002", name: "So Channolly" },
@@ -113,132 +132,149 @@ const students = [
   { id: "000004", name: "Kan Menglay" },
   { id: "000005", name: "Kim Tech" },
   { id: "000006", name: "Bon Sak" },
-  { id: "000007", name: "Phea Sreynith" },
+  { id: "000007", name: "Phea Sreynith" }
 ];
 
-const STATUS = ["Present", "Absent", "Late", "Excused"];
-let attendanceData = JSON.parse(localStorage.getItem("attendance")) || {};
 let selectedDate = new Date().toISOString().split("T")[0];
+let editMode = true;
 
-/* ---------------- INIT ---------------- */
-document.getElementById("attendanceDate").value = selectedDate;
-renderTable();
-loadDate(selectedDate);
+/* ---------- ELEMENTS ---------- */
+const table = document.getElementById("studentTable");
+const currentDateEl = document.getElementById("currentDate");
+const summaryDate = document.getElementById("summaryDate");
 
-/* ---------------- FUNCTIONS ---------------- */
-function renderTable() {
-  const tbody = document.getElementById("studentTable");
-  tbody.innerHTML = "";
+/* ---------- STORAGE ---------- */
+function getData() {
+  return JSON.parse(localStorage.getItem(selectedDate)) || {};
+}
 
-  students.forEach((s, index) => {
-    const tr = document.createElement("tr");
-    tr.className = "border-b";
+function saveData(data) {
+  localStorage.setItem(selectedDate, JSON.stringify(data));
+}
 
-    tr.innerHTML = `
-      <td class="p-3">${index + 1}</td>
-      <td class="p-3">${s.name}</td>
-      <td class="p-3">${s.id}</td>
-      <td class="p-3">
-        <div class="flex gap-2">
-          ${STATUS.map(status => `
-            <button
-              class="status-btn px-3 py-1 rounded-lg text-sm border"
-              data-id="${s.id}"
-              data-status="${status}"
-            >${status}</button>
-          `).join("")}
-        </div>
-      </td>
-    `;
-    tbody.appendChild(tr);
+/* ---------- RENDER ---------- */
+function renderTable(filter = "") {
+  const data = getData();
+  table.innerHTML = "";
+
+  const filtered = students.filter(s =>
+    s.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  document.getElementById("noResult").classList.toggle(
+    "hidden", filtered.length !== 0
+  );
+
+  filtered.forEach((s, i) => {
+    const status = data[s.id] || "";
+    table.innerHTML += `
+      <tr class="border-b">
+        <td class="p-3 text-center">${i + 1}</td>
+        <td class="p-3">${s.name}</td>
+        <td class="p-3 text-center">${s.id}</td>
+        <td class="p-3">
+          <div class="flex flex-wrap justify-center gap-2">
+            ${["Present","Absent","Late","Excused"].map(st => `
+              <button
+                onclick="setStatus('${s.id}','${st}')"
+                class="px-3 py-1 rounded-lg text-xs border
+                ${status === st ? statusColor(st) : 'bg-white'}
+                ${!editMode ? 'opacity-50 pointer-events-none' : ''}">
+                ${st}
+              </button>
+            `).join("")}
+          </div>
+        </td>
+      </tr>`;
   });
 }
 
-function loadDate(date) {
-  selectedDate = date;
-  updateUI();
+/* ---------- HELPERS ---------- */
+function statusColor(st) {
+  return {
+    Present: "bg-green-500 text-white",
+    Absent: "bg-red-500 text-white",
+    Late: "bg-yellow-400 text-black",
+    Excused: "bg-blue-500 text-white"
+  }[st];
 }
 
-function saveStatus(studentId, status) {
-  attendanceData[selectedDate] ||= {};
-  attendanceData[selectedDate][studentId] = status;
-  localStorage.setItem("attendance", JSON.stringify(attendanceData));
-  updateUI();
-}
-
-function updateUI() {
-  const data = attendanceData[selectedDate] || {};
-
-  document.querySelectorAll(".status-btn").forEach(btn => {
-    btn.className = "status-btn px-3 py-1 rounded-lg text-sm border";
-    const id = btn.dataset.id;
-    const status = btn.dataset.status;
-
-    if (data[id] === status) {
-      if (status === "Present") btn.classList.add("bg-green-500","text-white");
-      if (status === "Absent") btn.classList.add("bg-red-500","text-white");
-      if (status === "Late") btn.classList.add("bg-yellow-400","text-white");
-      if (status === "Excused") btn.classList.add("bg-blue-500","text-white");
-    }
-  });
-
+function setStatus(id, status) {
+  if (!editMode) return;
+  const data = getData();
+  data[id] = status;
+  saveData(data);
+  renderTable(searchInput.value);
   updateSummary();
 }
 
 function updateSummary() {
-  const data = attendanceData[selectedDate] || {};
-  const total = students.length;
-
-  let present = 0;
-  let absent = 0;
+  const data = getData();
+  let present = 0, absent = 0;
+  detailList.innerHTML = "";
 
   students.forEach(s => {
-    if (data[s.id] === "Present") present++;
-    if (data[s.id] === "Absent") absent++;
-  });
-
-  document.getElementById("presentPercent").innerText =
-    total ? Math.round((present / total) * 100) + "%" : "0%";
-  document.getElementById("absentCount").innerText = absent;
-
-  const detail = document.getElementById("detailList");
-  detail.innerHTML = "";
-
-  students.forEach(s => {
-    if (data[s.id]) {
-      detail.innerHTML += `
-        <div class="bg-white text-gray-800 rounded-lg px-4 py-2 flex justify-between items-center">
+    const st = data[s.id];
+    if (st === "Present") present++;
+    if (st === "Absent") absent++;
+    if (st) {
+      detailList.innerHTML += `
+        <div class="bg-white text-gray-800 rounded-lg px-4 py-2 flex justify-between">
           <span>${s.name}</span>
-          <span class="font-semibold">${data[s.id]}</span>
-        </div>
-      `;
+          <span class="px-2 rounded ${statusColor(st)}">${st}</span>
+        </div>`;
     }
   });
+
+  presentPercent.textContent =
+    Math.round((present / students.length) * 100) + "%";
+  absentCount.textContent = absent;
 }
 
-/* ---------------- EVENTS ---------------- */
-document.addEventListener("click", e => {
-  if (e.target.classList.contains("status-btn")) {
-    saveStatus(e.target.dataset.id, e.target.dataset.status);
-  }
-});
-
-document.getElementById("markAllPresent").onclick = () => {
-  attendanceData[selectedDate] = {};
-  students.forEach(s => attendanceData[selectedDate][s.id] = "Present");
-  localStorage.setItem("attendance", JSON.stringify(attendanceData));
-  updateUI();
+/* ---------- EVENTS ---------- */
+markAll.onclick = () => {
+  if (!editMode) return;
+  const data = {};
+  students.forEach(s => data[s.id] = "Present");
+  saveData(data);
+  renderTable();
+  updateSummary();
 };
 
-document.getElementById("resetAll").onclick = () => {
-  attendanceData[selectedDate] = {};
-  localStorage.setItem("attendance", JSON.stringify(attendanceData));
-  updateUI();
+resetAll.onclick = () => {
+  if (!editMode) return;
+  localStorage.removeItem(selectedDate);
+  renderTable(searchInput.value);
+  updateSummary();
 };
 
-document.getElementById("attendanceDate").onchange = e => {
-  loadDate(e.target.value);
+submitBtn.onclick = () => {
+  editMode = false;
+  alert("Attendance submitted. Edit mode disabled.");
+  renderTable(searchInput.value);
 };
+
+editBtn.onclick = () => {
+  editMode = !editMode;
+  editBtn.textContent = editMode ? "Save" : "Edit Mode";
+  if (!editMode) alert("Changes saved.");
+  renderTable(searchInput.value);
+};
+
+datePicker.onchange = e => loadDate(e.target.value);
+searchInput.oninput = e => renderTable(e.target.value);
+
+/* ---------- INIT ---------- */
+function loadDate(date) {
+  selectedDate = date;
+  currentDateEl.textContent = date;
+  summaryDate.textContent = date;
+  datePicker.value = date;
+  renderTable();
+  updateSummary();
+}
+
+loadDate(selectedDate);
 </script>
 
 </body>
