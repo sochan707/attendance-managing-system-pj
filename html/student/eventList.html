@@ -3,37 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Even list and register (admin)</title>
+    <title>Even list and register</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 </head>
 <body class="bg-[#EEEEEE] font-roboto">
 
-<!-- header -->
-<header class="bg-[#2A4759]">
-  <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
-    
-    <div class="text-[#F79B72] font-bold text-xl">logo</div>
+<!-- NAVBAR -->
+    <nav class="bg-[#2A4759] w-full shadow-2xl">
+        <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
+        <div class="text-[#F79B72] font-bold text-4xl">logo</div>
+        <div class="flex gap-2">
+            <button class="border border-[#F79B72] w-24 h-8 rounded-lg text-[#F79B72] font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:border-none">Log in</button>
+            <button class="bg-[#F79B72] w-24 h-8 rounded-lg text-white font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">Sign in</button>
+            <!-- <button><img src="icon/account_circle_24dp_F79B72_FILL0_wght400_GRAD0_opsz24.svg" class="w-30 h-30" alt=""></button> -->
+        </div>
 
-    <button class="sm:hidden text-2xl text-[#F79B72] ">☰</button>
-
-    <nav class=" hidden sm:flex items-center gap-2 font-bold text-xs text-[#F79B72]">
-      <a class="px-3 py-2 hover:text-white">Dashboard</a>
-      <a class="px-3 py-2 hover:text-white">Events</a>
-      <a class="px-3 py-2 hover:text-white">Profile</a>
-
-      <button class="w-24 h-8 bg-[#F79B72] text-white rounded-lg hover:text-black hover:bg-white">
-        Sign out
-      </button>
-      <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#F79B72"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+        </div>
     </nav>
-
-  </div>
-</header>
 
 <!-- page content -->
 <main class="max-w-[1440px] mx-auto px-4">
   
-  <h1 class="mt-12 text-2xl font-bold">Events</h1>
+  <h1 class="mt-12 text-4xl font-bold">Events</h1>
 
   <nav class="mt-8 flex gap-8">
     <a class="font-bold inline-block border-b-4 border-[#F79B72] ">All Events</a>
@@ -80,116 +72,237 @@
       <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
     </svg>Data Range</button>
 </div>
-<!--Card-->
-<div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-items-center gap-6">
-  <div class="w-[310px] h-[330px] bg-white rounded-lg ">
-    <div class="p-4">
-      <h1 class="font-bold text-xl">Introduction to Machine Learning</h1>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray" ><path d="M200-640h560v-80H200v80Zm0 0v-80 80Zm0 560q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v227q-19-9-39-15t-41-9v-43H200v400h252q7 22 16.5 42T491-80H200Zm520 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm67-105 28-28-75-75v-112h-40v128l87 87Z"/></svg>
-        <p class="text-gray-700 text-xs">October 26,2026</p>
+<!-- GRID -->
+  <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center">
+
+    <!-- CARD 1 -->
+    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
+         data-total="70" data-left="15">
+
+      <div class="p-4 space-y-3">
+        <h2 class="font-semibold text-lg">Introduction to Machine Learning</h2>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">calendar_today</span>
+          October 26, 2026
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">schedule</span>
+          10:00 AM – 12:00 PM
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">location_on</span>
+          Cosmo Hall
+        </div>
+
+        <p class="text-sm text-gray-700">
+          Beginner-friendly workshop covering machine learning basics.
+        </p>
+
+        <div class="space-y-1">
+          <div class="seats-text flex justify-between text-xs font-medium"></div>
+          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="progress-bar h-full rounded-full transition-all"></div>
+          </div>
+        </div>
+
+        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+          Register
+        </button>
       </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M580-320 444-456.19V-648h72v162l115 115-51 51ZM444-720v-72h72v72h-72Zm276 276v-72h72v72h-72ZM444-168v-72h72v72h-72ZM168-444v-72h72v72h-72ZM480-96q-79.38 0-149.19-30T208.5-208.5Q156-261 126-330.96t-30-149.5Q96-560 126-630q30-70 82.5-122t122.46-82q69.96-30 149.5-30t149.55 30.24q70 30.24 121.79 82.08 51.78 51.84 81.99 121.92Q864-559.68 864-480q0 79.38-30 149.19T752-208.5Q700-156 629.87-126T480-96Zm.46-72q130.46 0 221-91Q792-350 792-480.46t-90.54-221Q610.92-792 480.46-792 350-792 259-701.46t-91 221Q168-350 259-259t221.46 91ZM480-480Z"/></svg>
-        <p class="text-gray-700 text-xs">10:AM to 12:AM</p>
-      </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z"/></svg>
-                <p class="text-gray-700 text-xs">Room: Cosmo hall</p>
-      </div>
-      <p class="mt-2 leading-snug">A beginner-friendly workshop covering the basics of machine learning concepts and applications.</p>
-      <div class=" flex flex-row gap-8">
-        <p class="mt-2 text-[#52C046] w-full" >15 seats left</p>
-        <input type="range" min="0" max="70" value="15" disabled class="mt-4 w-full h-2 cursor-default accent-[#52C046]">
-      </div>
-      
-      <button class="w-full h-10 mt-6 bg-[#2A4759] text-[#F79B72] rounded-lg ">Register</button>
     </div>
-    
+
+    <!-- CARD 2 -->
+    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
+         data-total="70" data-left="50">
+
+      <div class="p-4 space-y-3">
+        <h2 class="font-semibold text-lg">Campus Social Mixer</h2>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">calendar_today</span>
+          October 26, 2026
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">schedule</span>
+          9:00 AM – 12:00 PM
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">location_on</span>
+          Unicorn Hall
+        </div>
+
+        <p class="text-sm text-gray-700">
+          Meet new people, enjoy free food, and relax before midterms.
+        </p>
+
+        <div class="space-y-1">
+          <div class="seats-text flex justify-between text-xs font-medium"></div>
+          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="progress-bar h-full rounded-full transition-all"></div>
+          </div>
+        </div>
+
+        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+          Register
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
+         data-total="70" data-left="5">
+
+      <div class="p-4 space-y-3">
+        <h2 class="font-semibold text-lg">Guest Lecture: The Future of AI</h2>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">calendar_today</span>
+          November 2, 2026
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">schedule</span>
+          8:00 AM – 11:30 PM
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">location_on</span>
+          A204, ITB
+        </div>
+
+        <p class="text-sm text-gray-700">
+          Dr. Evelyn Reed discusses AI trends and ethics.
+        </p>
+
+        <div class="space-y-1">
+          <div class="seats-text flex justify-between text-xs font-medium"></div>
+          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="progress-bar h-full rounded-full transition-all"></div>
+          </div>
+        </div>
+
+        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+          Register
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
+         data-total="70" data-left="0">
+
+      <div class="p-4 space-y-3">
+        <h2 class="font-semibold text-lg">Senior Project Showcase</h2>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">calendar_today</span>
+          November 5, 2026
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">schedule</span>
+          9:00 AM – 12:00 PM
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">location_on</span>
+          Cosmo Hall
+        </div>
+
+        <p class="text-sm text-gray-700">
+          Explore innovative senior projects and network with students.
+        </p>
+
+        <div class="space-y-1">
+          <div class="seats-text flex justify-between text-xs font-medium"></div>
+          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="progress-bar h-full rounded-full transition-all"></div>
+          </div>
+        </div>
+
+        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+          Register
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
+         data-total="70" data-left="0">
+
+      <div class="p-4 space-y-3">
+        <h2 class="font-semibold text-lg">Senior Project Showcase</h2>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">calendar_today</span>
+          November 5, 2026
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">schedule</span>
+          9:00 AM – 12:00 PM
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-gray-600">
+          <span class="material-icons-outlined text-sm">location_on</span>
+          Cosmo Hall
+        </div>
+
+        <p class="text-sm text-gray-700">
+          Explore innovative senior projects and network with students.
+        </p>
+
+        <div class="space-y-1">
+          <div class="seats-text flex justify-between text-xs font-medium"></div>
+          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="progress-bar h-full rounded-full transition-all"></div>
+          </div>
+        </div>
+
+        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+          Register
+        </button>
+      </div>
+    </div>
 
   </div>
-    <div class="w-[310px] h-[330px] bg-white rounded-lg ">
-    <div class="p-4">
-      <h1 class="font-bold text-xl">Compus Social Mixer</h1>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray" ><path d="M200-640h560v-80H200v80Zm0 0v-80 80Zm0 560q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v227q-19-9-39-15t-41-9v-43H200v400h252q7 22 16.5 42T491-80H200Zm520 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm67-105 28-28-75-75v-112h-40v128l87 87Z"/></svg>
-        <p class="text-gray-700 text-xs">October 26,2026</p>
-      </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M580-320 444-456.19V-648h72v162l115 115-51 51ZM444-720v-72h72v72h-72Zm276 276v-72h72v72h-72ZM444-168v-72h72v72h-72ZM168-444v-72h72v72h-72ZM480-96q-79.38 0-149.19-30T208.5-208.5Q156-261 126-330.96t-30-149.5Q96-560 126-630q30-70 82.5-122t122.46-82q69.96-30 149.5-30t149.55 30.24q70 30.24 121.79 82.08 51.78 51.84 81.99 121.92Q864-559.68 864-480q0 79.38-30 149.19T752-208.5Q700-156 629.87-126T480-96Zm.46-72q130.46 0 221-91Q792-350 792-480.46t-90.54-221Q610.92-792 480.46-792 350-792 259-701.46t-91 221Q168-350 259-259t221.46 91ZM480-480Z"/></svg>
-        <p class="text-gray-700 text-xs">9:00AM to 12:AM</p>
-      </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z"/></svg>
-                <p class="text-gray-700 text-xs">Unicon</p>
-      </div>
-      <p class="mt-6 leading-snug">Meet new people, enjoy free food, and relax before mid-terms. All students are welcome!</p>
-      <div class="mt-2 flex flex-row gap-8">
-        <p class="mt-2 text-[#52C046] w-full" >50 seats left</p>
-        <input type="range" min="0" max="70" value="50" disabled class="mt-4 w-full h-2 cursor-default accent-[#52C046]">
-      </div>
-      
-      <button class="w-full h-10 mt-7 bg-[#2A4759] text-[#F79B72] rounded-lg ">Register</button>
-    </div>
-    
-
-  </div>
-
-    <div class="w-[310px] h-[330px] bg-white rounded-lg ">
-    <div class="p-4">
-      <h1 class="font-bold text-xl">Guest Lecture: The Future of AI</h1>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray" ><path d="M200-640h560v-80H200v80Zm0 0v-80 80Zm0 560q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v227q-19-9-39-15t-41-9v-43H200v400h252q7 22 16.5 42T491-80H200Zm520 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm67-105 28-28-75-75v-112h-40v128l87 87Z"/></svg>
-        <p class="text-gray-700 text-xs">November 02,2026</p>
-      </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M580-320 444-456.19V-648h72v162l115 115-51 51ZM444-720v-72h72v72h-72Zm276 276v-72h72v72h-72ZM444-168v-72h72v72h-72ZM168-444v-72h72v72h-72ZM480-96q-79.38 0-149.19-30T208.5-208.5Q156-261 126-330.96t-30-149.5Q96-560 126-630q30-70 82.5-122t122.46-82q69.96-30 149.5-30t149.55 30.24q70 30.24 121.79 82.08 51.78 51.84 81.99 121.92Q864-559.68 864-480q0 79.38-30 149.19T752-208.5Q700-156 629.87-126T480-96Zm.46-72q130.46 0 221-91Q792-350 792-480.46t-90.54-221Q610.92-792 480.46-792 350-792 259-701.46t-91 221Q168-350 259-259t221.46 91ZM480-480Z"/></svg>
-        <p class="text-gray-700 text-xs">8:AM to 11:30AM</p>
-      </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z"/></svg>
-                <p class="text-gray-700 text-xs">A204, ITB</p>
-      </div>
-      <p class="mt-2 leading-snug">Join us for an inspiring talk from Dr. Evelyn Reed on the future trends and ethics of artificial intelligence.</p>
-      <div class=" flex flex-row gap-8">
-        <p class="mt-2 text-[#52C046] w-full" >45 seats left</p>
-        <input type="range" min="0" max="120" value="45" disabled class="mt-4 w-full h-2 cursor-default accent-[#52C046]">
-      </div>
-      
-      <button class="w-full h-10 mt-6 bg-[#2A4759] text-[#F79B72] rounded-lg ">Register</button>
-    </div>
-    
-
-  </div>
-
-    <div class="w-[310px] h-[330px] bg-white rounded-lg ">
-    <div class="p-4">
-      <h1 class="font-bold text-xl">Senior Project Showcase</h1>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray" ><path d="M200-640h560v-80H200v80Zm0 0v-80 80Zm0 560q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v227q-19-9-39-15t-41-9v-43H200v400h252q7 22 16.5 42T491-80H200Zm520 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm67-105 28-28-75-75v-112h-40v128l87 87Z"/></svg>
-        <p class="text-gray-700 text-xs">November 5,2026</p>
-      </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M580-320 444-456.19V-648h72v162l115 115-51 51ZM444-720v-72h72v72h-72Zm276 276v-72h72v72h-72ZM444-168v-72h72v72h-72ZM168-444v-72h72v72h-72ZM480-96q-79.38 0-149.19-30T208.5-208.5Q156-261 126-330.96t-30-149.5Q96-560 126-630q30-70 82.5-122t122.46-82q69.96-30 149.5-30t149.55 30.24q70 30.24 121.79 82.08 51.78 51.84 81.99 121.92Q864-559.68 864-480q0 79.38-30 149.19T752-208.5Q700-156 629.87-126T480-96Zm.46-72q130.46 0 221-91Q792-350 792-480.46t-90.54-221Q610.92-792 480.46-792 350-792 259-701.46t-91 221Q168-350 259-259t221.46 91ZM480-480Z"/></svg>
-        <p class="text-gray-700 text-xs">9:00AM to 12:AM</p>
-      </div>
-      <div class="flex flex-row gap-1 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="gray"><path d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z"/></svg>
-                <p class="text-gray-700 text-xs">Room: Cosmo hall</p>
-      </div>
-      <p class="mt-6 leading-snug">See the innovative projects developed by our graduating seniors. A great networking opportunity.</p>
-      <div class="mt-2 flex flex-row gap-8">
-        <p class="mt-2 text-[#EB3131] w-full" >No seats Avilable</p>
-        <input type="range" min="0" max="80" value="0" disabled class="mt-4 w-full h-2 cursor-default accent-[#52C046]">
-      </div>
-      
-      <button class="w-full h-10 mt-7 bg-[#2A4759] text-[#F79B72] rounded-lg ">Register</button>
-    </div>
-    
-
-  </div>
-</div>
 </main>
-</body>
 
+<!-- LOGIC -->
+<script>
+document.querySelectorAll('.event-card').forEach(card => {
+  const total = Number(card.dataset.total);
+  const left = Number(card.dataset.left);
+  const filled = ((total - left) / total) * 100;
+
+  const bar = card.querySelector('.progress-bar');
+  const text = card.querySelector('.seats-text');
+  const btn = card.querySelector('.register-btn');
+
+  bar.style.width = filled + '%';
+
+  if (left === 0) {
+    bar.classList.add('bg-gradient-to-r','from-red-400','to-red-600');
+    text.innerHTML = `<span class="text-red-600">No seats available</span><span>${total} total</span>`;
+    btn.textContent = 'Full';
+    btn.disabled = true;
+    btn.classList.add('bg-gray-300','text-gray-500','cursor-not-allowed');
+  } else if (left <= 10) {
+    bar.classList.add('bg-gradient-to-r','from-yellow-400','to-orange-500','animate-warning');
+    text.innerHTML = `<span class="text-orange-600">${left} seats left</span><span>${total} total</span>`;
+    btn.classList.add('bg-[#2A4759]','text-[#F79B72]','hover:bg-[#1f3644]');
+  } else {
+    bar.classList.add('bg-gradient-to-r','from-green-400','to-green-600');
+    text.innerHTML = `<span class="text-green-600">${left} seats left</span><span>${total} total</span>`;
+    btn.classList.add('bg-[#2A4759]','text-[#F79B72]','hover:bg-[#1f3644]');
+  }
+});
+</script>
+
+</body>
 </html>

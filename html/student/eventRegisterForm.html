@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Walk for Peace Student Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#EEEEEE] min-h-screen flex justify-center py-10">
+
+  <div class="w-full max-w-3xl space-y-6">
+
+    <!-- Header Card -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="h-2 bg-[#F79B72]"></div>
+      <div class="p-6">
+        <h1 class="text-3xl font-semibold mb-3">
+            Student Registration Form
+        </h1>
+
+
+        <p class="text-red-600 text-sm">
+          * Required
+        </p>
+      </div>
+    </div>
+
+    <!-- Full Name -->
+    <div class="bg-white rounded-lg shadow p-6 ">
+      <label class="block font-medium mb-2">
+        Full Name <span class="text-red-500">*</span>
+      </label>
+
+      <input
+        type="text"
+        placeholder="Enter your full name"
+        required
+        class="w-full border-b border-gray-500 focus:outline-none py-2"/>
+    </div>
+        <!-- Email -->
+    <div class="bg-white rounded-lg shadow p-6 ">
+      <label class="block font-medium mb-2">
+        Email <span class="text-red-500">*</span>
+      </label>
+
+      <input
+        type="text"
+        placeholder="Enter your email"
+        required
+        class="w-full border-b border-gray-500 focus:outline-none py-2"/>
+    </div>
+
+    <!-- Gender -->
+    <div class="bg-white rounded-lg shadow p-6">
+      <label class="block font-medium mb-4">
+        Gender <span class="text-red-500">*</span>
+      </label>
+
+      <div class="space-y-3">
+        <label class="flex items-center gap-3">
+          <input type="radio" name="gender" class="accent-[#F79B72]" required>
+          <span>Male</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="gender" class="accent-[#F79B72]">
+          <span>Female</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Generation -->
+    <div class="bg-white rounded-lg shadow p-6">
+      <label class="block font-medium mb-4">
+        Generation <span class="text-red-500">*</span>
+      </label>
+
+      <div class="space-y-3">
+        <label class="flex items-center gap-3">
+          <input type="radio" name="generation" class="accent-[#F79B72]" required>
+          <span>9</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="generation" class="accent-[#F79B72]">
+          <span>10</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="generation" class="accent-[#F79B72]">
+          <span>11</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="generation" class="accent-[#F79B72]">
+          <span>12</span>
+        </label>
+      </div>
+    </div>
+   <!-- Major -->
+    <div class="bg-white rounded-lg shadow p-6">
+      <label class="block font-medium mb-4">
+        Major <span class="text-red-500">*</span>
+      </label>
+
+      <div class="space-y-3">
+        <label class="flex items-center gap-3">
+          <input type="radio" name="major" class="accent-[#F79B72]" required>
+          <span>Digital Business</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="major" class="accent-[#F79B72]">
+          <span>Computer Science</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="major" class="accent-[#F79B72]">
+          <span>Telecommunication and Networking</span>
+        </label>
+
+
+      </div>
+    </div>
+       <!-- question -->
+    <div class="bg-white rounded-lg shadow p-6">
+      <label class="block font-medium mb-4">
+        Will you join This Seminar? <span class="text-red-500">*</span>
+      </label>
+
+      <div class="space-y-3">
+        <label class="flex items-center gap-3">
+          <input type="radio" name="major" class="accent-[#F79B72]" required>
+          <span>Yes</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="major" class="accent-[#F79B72]">
+          <span>No</span>
+        </label>
+
+        <label class="flex items-center gap-3">
+          <input type="radio" name="major" class="accent-[#F79B72]">
+          <span>Maybe</span>
+        </label>
+
+
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="flex justify-end">
+      <button
+        class="bg-[#F79B72] font-bold text-white px-6 py-2 rounded-md hover:bg-orange-400 transition"
+      >
+        Submit
+      </button>
+    </div>
+    
+
+  </div>
+
+</body>
+</html>
+
