@@ -359,10 +359,10 @@ document.querySelectorAll('.event-card').forEach(card => {
     btn.classList.add('bg-gray-300','cursor-not-allowed');
   } else if (left <= 10) {
     bar.classList.add('bg-orange-500','animate-warning');
-    text.innerHTML = `<span class="text-orange-600">${left} left</span><span>${total}</span>`;
+    text.innerHTML = `<span class="text-orange-600">${left} seats left</span><span>${total}</span>`;
   } else {
     bar.classList.add('bg-green-500');
-    text.innerHTML = `<span class="text-green-600">${left} left</span><span>${total}</span>`;
+    text.innerHTML = `<span class="text-green-600">${left} seats left</span><span>${total}</span>`;
   }
 
   updateButton(card);
