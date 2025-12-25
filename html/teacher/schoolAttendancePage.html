@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>School Attendance</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -11,12 +12,17 @@
 <!-- ================= NAVBAR ================= -->
     <nav class="bg-[#2A4759] w-full shadow-2xl">
         <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
-        <div class="text-[#F79B72] font-bold text-4xl">logo</div>
-        <div class="flex gap-2">
-            <button class="border border-[#F79B72] w-24 h-8 rounded-lg text-[#F79B72] font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:border-none">Log in</button>
-            <button class="bg-[#F79B72] w-24 h-8 rounded-lg text-white font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">Sign in</button>
-            <!-- <button><img src="icon/account_circle_24dp_F79B72_FILL0_wght400_GRAD0_opsz24.svg" class="w-30 h-30" alt=""></button> -->
-        </div>
+          <!-- left -->
+          <div class="flex flex-row gap-3 items-center ">
+            <i id="menu" class="material-icons text-3xl text-[#F79B72]">menu</i>
+            <div class="text-[#F79B72] font-bold text-4xl">logo</div>
+          </div>
+          
+          <!-- right -->
+          <div class="flex gap-2 items-center mr-6">
+              <i class="material-icons text-4xl text-[#F79B72]">account_circle</i>
+              <p class="text-[#eeeeee] font-medium text-lg">SreyNith</p>
+          </div>
 
         </div>
     </nav>
@@ -215,8 +221,8 @@ function updateSummary() {
 
   students.forEach(s => {
     const st = data[s.id];
-    if (st === "Present") present++;
-    if (st === "Absent") absent++;
+    if (st === "Present" || st === "Late") present++;
+    if (st === "Absent" || st === "Excused") absent++;
     if (st) {
       detailList.innerHTML += `
         <div class="bg-white text-gray-800 rounded-lg px-4 py-2 flex justify-between">

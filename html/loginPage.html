@@ -41,6 +41,7 @@
                         Enter Your Email Account
                     </p>
                     <input 
+                        id="emailInput"
                         type="email" 
                         class="bg-white py-3 px-4 w-full rounded-lg shadow text-gray-600 text-base"
                         placeholder="Enter your email">
@@ -52,6 +53,7 @@
                         Enter Your Password
                     </p>
                     <input 
+                        id="passwordInput"
                         type="password" 
                         class="bg-white py-3 px-4 w-full rounded-lg shadow-2xl text-gray-600 text-base"
                         placeholder="Enter your password">
@@ -63,12 +65,17 @@
 
                 <!-- Button -->
                 <div class="space-y-6">
-                    <button class="bg-[#F79B72] py-3 w-full rounded-lg shadow text-white font-bold text-lg">
-                        Sign in
+                    <button id="loginBtn" class="bg-[#F79B72] py-3 w-full rounded-lg shadow text-white font-bold text-lg">
+                        Log in
                     </button>
-                    <p class="text-[#F79B72] text-xs text-center">
-                        don't have an account? sign in
-                    </p>
+
+                    <p id="loginMsg" class="text-red-600 text-sm mt-2 hidden"></p>
+
+                        <a href="./signinPage.html" class="text-[#F79B72] text-xs text-center">
+                            don't have an account? <span class="ml-1">sign in</span> 
+                        </a>
+
+                    
                 </div>
 
             </div>
@@ -76,5 +83,43 @@
 
     </div>
 
+  <!-- Login redirect script -->
+  <script>
+    (function(){
+      const mapping = {
+        'teacher123@gmail.com': './teacher/chooseClassPage.html',
+        'student123@gmail.com': './student/studentAttendanceRecord.html',
+        'admin123@gmail.com': './admin/reportPage.html'
+      };
+
+      const email = document.getElementById('emailInput');
+      const pw = document.getElementById('passwordInput');
+      const btn = document.getElementById('loginBtn');
+      const msg = document.getElementById('loginMsg');
+
+      function showMessage(text) {
+        if (msg) {
+          msg.textContent = text;
+          msg.classList.remove('hidden');
+          setTimeout(()=> msg.classList.add('hidden'), 3000);
+        } else {
+          alert(text);
+        }
+      }
+
+      function handle() {
+        const val = (email && email.value || '').trim().toLowerCase();
+        if (mapping[val]) {
+          window.location.href = mapping[val];
+        } else {
+          showMessage('No matching account found.');
+        }
+      }
+
+      if (btn) btn.addEventListener('click', (e)=> { e.preventDefault(); handle(); });
+      if (email) email.addEventListener('keydown', (e)=> { if (e.key === 'Enter') { e.preventDefault(); handle(); } });
+      if (pw) pw.addEventListener('keydown', (e)=> { if (e.key === 'Enter') { e.preventDefault(); handle(); } });
+    })();
+  </script>
 </body>
 </html>

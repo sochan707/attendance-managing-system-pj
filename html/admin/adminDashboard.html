@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-slate-700 text-white px-4 sm:px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-orange-400 text-xl">☰</span>
+      <span class="font-bold text-lg hidden sm:block">Logo</span>
+    </div>
+    <div class="w-8 h-8 sm:w-9 sm:h-9 bg-orange-300 rounded-full flex items-center justify-center">
+      👤
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="p-4 sm:p-6 max-w-7xl mx-auto">
+
+    <!-- Title -->
+    <h1 class="text-xl sm:text-2xl font-bold mb-6">Dashboard</h1>
+
+    <!-- Stats Cards -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+      <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+        <p class="text-gray-500 text-sm">Total Student</p>
+        <p class="text-2xl font-bold">1250</p>
+      </div>
+
+      <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+        <p class="text-gray-500 text-sm">Active Teacher</p>
+        <p class="text-2xl font-bold">85</p>
+      </div>
+
+      <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+        <p class="text-gray-500 text-sm">Upcoming Events</p>
+        <p class="text-2xl font-bold">4</p>
+      </div>
+
+      <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+        <p class="text-gray-500 text-sm">Today’s Attendance</p>
+        <p class="text-2xl font-bold text-green-500">95%</p>
+      </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <h2 class="text-orange-400 font-semibold mb-4 text-sm sm:text-base">
+      Quick Action
+    </h2>
+
+    <section class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
+        <i class="material-icons">group_add</i>
+        <span class="mt-2 text-sm sm:text-base font-semibold">Manage Users</span>
+      </button>
+
+      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
+        <i class="material-icons">add_circle</i>
+        <span class="mt-2 text-sm sm:text-base font-semibold">Create Event</span>
+      </button>
+
+      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
+        <i class="material-icons">assignment_add</i>
+        <span class="mt-2 text-sm sm:text-base font-semibold">Manage Class</span>
+      </button>
+
+      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
+        <i class="material-icons">add_circle</i>
+        <span class="mt-2 text-sm sm:text-base font-semibold">Generate Report</span>
+      </button>
+    </section>
+
+    <!-- Chart + Activity -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Chart -->
+      <div class="bg-white rounded-lg shadow p-4 sm:p-6 lg:col-span-2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+          <h3 class="font-semibold text-sm sm:text-base">
+            Weekly Attendance Trend
+          </h3>
+          <div class="flex gap-2">
+            <button class="px-3 py-1 rounded-full bg-orange-400 text-white text-xs sm:text-sm">
+              last 7 Days
+            </button>
+            <button class="px-3 py-1 rounded-full bg-gray-200 text-xs sm:text-sm">
+              last 30 Days
+            </button>
+          </div>
+        </div>
+
+        <div class="h-52 sm:h-64 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
+          Chart Area
+        </div>
+      </div>
+
+      <!-- Activity -->
+      <aside class="bg-white rounded-lg shadow p-4 sm:p-6">
+        <h3 class="font-semibold mb-4 text-sm sm:text-base">
+          Recent Activity & Alert
+        </h3>
+
+        <ul class="space-y-4 text-xs sm:text-sm">
+          <li class="flex gap-3">
+            <span class="text-orange-400">⚠️</span>
+            <div>
+              <p class="font-semibold">Low class Attendance alert for class G2</p>
+              <p class="text-gray-500">2 hours ago</p>
+            </div>
+          </li>
+
+          <li class="flex gap-3">
+            <span class="text-green-500">📅</span>
+            <div>
+              <p class="font-semibold">Upcoming: Annual Sports Day</p>
+              <p class="text-gray-500">Tomorrow at 9:00 AM</p>
+            </div>
+          </li>
+
+          <li class="flex gap-3">
+            <span class="text-blue-500">📋</span>
+            <div>
+              <p class="font-semibold">Monthly reports generated successfully.</p>
+              <p class="text-gray-500">Yesterday</p>
+            </div>
+          </li>
+
+          <li class="flex gap-3">
+            <span class="text-orange-400">⚠️</span>
+            <div>
+              <p class="font-semibold">Low attendance alert for class 8A</p>
+              <p class="text-gray-500">3 days ago</p>
+            </div>
+          </li>
+        </ul>
+      </aside>
+
+    </section>
+
+  </main>
+</body>
+</html>

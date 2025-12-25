@@ -7,46 +7,66 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#EEEEEE]">
-    <div>
-        <aside class="w-56 h-screen bg-white text-black fixed shadow-2xl">
-            <div class="p-6">
-                <div class="flex flex-row items-center mb-8 gap-3">
-                <i class="material-icons text-4xl">account_circle</i>
-                <div >                
-                    <h2 class="text-xl font-bold">Admin Panel</h2>
-                    <p class="text-xs">Attendace System</p></div>
-                </div>
 
-                <nav class="flex flex-col space-y-4 font-bold">
-                    <a href="dashboard.html" class="flex items-center gap-3 hover:bg-blue-100 px-4 py-2 rounded">
+<body class="bg-[#EEEEEE]">
+
+    <aside class="w-68 h-screen bg-white text-black fixed shadow-2xl flex flex-col">
+
+        <!-- Collapse Button -->
+        <div class="flex justify-end p-4 pb-0">
+            <i class="material-icons cursor-pointer hover:text-blue-500">
+                arrow_forward
+            </i>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6 pt-4 flex flex-col h-full">
+
+            <!-- Profile -->
+            <div class="flex items-center gap-3 mb-6">
+                <i class="material-icons text-4xl">account_circle</i>
+                <div>
+                    <h2 class="text-xl font-bold">Admin Panel</h2>
+                    <p class="text-xs text-gray-500">Attendance System</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex flex-col justify-between h-full font-bold">
+
+                <!-- Top Links -->
+                <div class="space-y-2">
+                    <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
                     </a>
 
-                    <a href="userManagement.html" class="flex items-center gap-3 hover:bg-blue-100 px-4 py-2 rounded">
+                    <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100">
                         <i class="material-icons">group</i>
                         <span>User Management</span>
                     </a>
 
-                    <a href="classes.html" class="flex items-center gap-3 hover:bg-blue-100 px-4 py-2 rounded">
+                    <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100">
                         <i class="material-icons">class</i>
                         <span>Classes</span>
                     </a>
 
-                    <a href="reports.html" class="flex items-center gap-3 hover:bg-blue-100 px-4 py-2 rounded">
+                    <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-gray-100">
                         <i class="material-icons">bar_chart</i>
                         <span>Reports</span>
-                     </a>
+                    </a>
+                </div>
 
-    <a href="Event.html" class="flex items-center gap-3 hover:bg-blue-100 px-4 py-2 rounded">
-        <i class="material-icons">logout</i>
-        <span>Logout</span>
-    </a>
-</nav>
+                <!-- Logout -->
+                <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-100">
+                    <i class="material-icons">logout</i>
+                    <span>Logout</span>
+                </a>
 
-            </div>
-        </aside>
-    </div>
+            </nav>
+
+        </div>
+    </aside>
+
 </body>
 </html>
