@@ -6,26 +6,40 @@
     <title>Login Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#EEEEEE] flex justify-center items-start font-roboto ">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
-    <div class="mt-16  w-full max-w-[1440px] flex flex-col md:flex-row gap-8 px-8">
-        <!--Left Section-->
-        <div class="w-full md:w-1/2 flex flex-col justify-center items-center text-center">
-        <h1 class="font-bold text-[#F79B72] md:text-6xl text-4xl">Welcome To Our Website</h1>
-        <p class="mt-4 text-gray-700 flex ">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
 
-        </p>
-    </div>
-    <!--Right Section-->
-    <div class="w-full md:w-1/2 bg-[#2A4759] rounded-2xl shadow-2xl min-h-[480px] mt-24 mb-24">
-        <h1 class="text-white font-bold flex justify-center mt-12 text-3xl">Sign in</h1>
-        <div class="ml-16 mr-16 space-y-8 py-8">
-            <!-- Email -->
+<body class="bg-[#EEEEEE] font-roboto min-h-screen relative">
+
+    <!-- Back Button -->
+    <a href="./homePage.html" class="absolute top-6 left-6">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+            <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/>
+        </svg>
+    </a>
+
+    <!-- Page Wrapper -->
+    <div class="min-h-screen flex flex-col justify-center items-center px-4">
+
+        <!-- Welcome Text -->
+        <div class="mb-10 text-center">
+            <h1 class="font-bold text-[#F79B72] md:text-6xl text-4xl">
+                Welcome To Our Website
+            </h1>
+        </div>
+
+        <!-- Login Card -->
+        <div class="w-full max-w-[750px] bg-[#2A4759] rounded-2xl shadow-2xl min-h-[480px]">
+
+            <h1 class="text-white font-bold text-center text-3xl mt-8">
+                Log in
+            </h1>
+
+            <div class="px-12 space-y-8 py-10">
+
+                <!-- Email -->
                 <div>
-                    <p class="text-[#F79B72] text-xs mb-2">Enter Your Email Account</p>
+                    <p class="text-[#F79B72] text-xs mb-2">
+                        Enter Your Email Account
+                    </p>
                     <input 
                         type="email" 
                         class="bg-white py-3 px-4 w-full rounded-lg shadow text-gray-600 text-base"
@@ -34,28 +48,33 @@
 
                 <!-- Password -->
                 <div>
-                    <p class="text-[#F79B72] text-xs mb-2">Enter Your Password</p>
+                    <p class="text-[#F79B72] text-xs mb-2">
+                        Enter Your Password
+                    </p>
                     <input 
                         type="password" 
                         class="bg-white py-3 px-4 w-full rounded-lg shadow-2xl text-gray-600 text-base"
                         placeholder="Enter your password">
 
-                    <p class="text-[#F79B72]  text-xs mt-2 cursor-pointer hover:underline">
+                    <p class="text-[#F79B72] text-xs mt-2 cursor-pointer hover:underline">
                         Forgot password?
                     </p>
                 </div>
 
                 <!-- Button -->
-                 <div class="space-y-8">
-                    <button class="bg-[#F79B72] py-3 w-full rounded-lg shadow text-white font-bold text-lg ">Sign in</button>
-                    <p class="text-[#F79B72] text-xs">don't have an account? sign in</p>
-                 </div>
+                <div class="space-y-6">
+                    <button class="bg-[#F79B72] py-3 w-full rounded-lg shadow text-white font-bold text-lg">
+                        Sign in
+                    </button>
+                    <p class="text-[#F79B72] text-xs text-center">
+                        don't have an account? sign in
+                    </p>
+                </div>
 
             </div>
-            
         </div>
+
     </div>
-    </div>
-    
+
 </body>
 </html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Select a Class</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<div class="max-w-7xl mx-auto p-6 space-y-6">
+
+  <!-- HEADER -->
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-bold">Select a Class</h1>
+      <p class="text-blue-600 mt-1">
+        Good Morning, Mr. Anderson. Choose a session to record attendance.
+      </p>
+    </div>
+
+    <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border">
+      <i class="ph ph-calendar"></i>
+      <span>Monday, Oct 24th, 2023</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="bg-white rounded-xl border p-6">
+      <p class="text-gray-500 text-sm uppercase">Total Classes Today</p>
+      <p class="text-4xl font-bold mt-2">4</p>
+    </div>
+
+    <div class="bg-white rounded-xl border p-6 flex justify-between items-center">
+      <div>
+        <p class="text-gray-500 text-sm uppercase">Attendance Completion</p>
+        <p class="text-3xl font-bold mt-2">50%</p>
+        <p class="text-sm text-gray-500">2/4 completed</p>
+      </div>
+      <div class="bg-green-100 p-3 rounded-full">
+        <i class="ph ph-check-circle text-green-600 text-xl"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="flex gap-3">
+    <div class="relative flex-1">
+      <i class="ph ph-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+      <input
+        id="searchInput"
+        oninput="filterClasses()"
+        placeholder="Search by class name or subject"
+        class="w-full pl-10 pr-4 py-2 border rounded-lg"
+      />
+    </div>
+    <button class="border px-4 py-2 rounded-lg flex items-center gap-2">
+      <i class="ph ph-funnel"></i> Filter
+    </button>
+  </div>
+
+  <!-- TITLE -->
+  <h2 class="text-lg font-semibold flex items-center gap-2">
+    <i class="ph ph-clock"></i> Today's Schedule
+  </h2>
+
+  <!-- CLASSES -->
+  <div id="classGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+  <!-- EMPTY STATE -->
+  <p id="emptyState" class="hidden text-center text-gray-500 mt-8">
+    No class found
+  </p>
+
+</div>
+
+<script>
+const classes = [
+  {
+    time: "09:00 - 10:30 AM",
+    status: "Pending",
+    name: "Biology 101",
+    info: "Grade 10 • Section B • Room 304",
+    students: "24 Students"
+  },
+  {
+    time: "08:00 - 08:45 AM",
+    status: "Completed",
+    name: "Homeroom",
+    info: "Grade 10 • Room 304",
+    students: "28/30 Present"
+  },
+  {
+    time: "11:00 - 12:00 PM",
+    status: "Completed",
+    name: "Chemistry Lab",
+    info: "Grade 11 • Section A • Science Block B",
+    students: "22/25 Present"
+  },
+  {
+    time: "01:00 - 02:30 PM",
+    status: "Upcoming",
+    name: "Study Hall",
+    info: "Mixed Grade • Library",
+    students: "15 Students Assigned"
+  }
+];
+
+const grid = document.getElementById("classGrid");
+const emptyState = document.getElementById("emptyState");
+
+function badge(status) {
+  if (status === "Completed") return "bg-green-100 text-green-700";
+  if (status === "Pending") return "bg-yellow-100 text-yellow-700";
+  return "bg-gray-200 text-gray-700";
+}
+
+function render(data) {
+  grid.innerHTML = "";
+  emptyState.classList.toggle("hidden", data.length !== 0);
+
+  data.forEach(c => {
+    grid.innerHTML += `
+      <div class="bg-white rounded-xl border p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+              ${c.time}
+            </span>
+            <span class="text-sm px-3 py-1 rounded-full ${badge(c.status)}">
+              ${c.status}
+            </span>
+          </div>
+
+          <h3 class="font-bold text-lg">${c.name}</h3>
+          <p class="text-sm text-gray-500 mt-1">${c.info}</p>
+          <p class="text-sm text-green-600 mt-3">${c.students}</p>
+        </div>
+
+        <button class="mt-4 border rounded-lg py-2 flex justify-center items-center gap-2">
+          <i class="ph ph-eye"></i> View Details
+        </button>
+      </div>
+    `;
+  });
+}
+
+function filterClasses() {
+  const q = searchInput.value.toLowerCase();
+  const filtered = classes.filter(c =>
+    c.name.toLowerCase().includes(q) ||
+    c.info.toLowerCase().includes(q)
+  );
+  render(filtered);
+}
+
+render(classes);
+</script>
+
+</body>
+</html>

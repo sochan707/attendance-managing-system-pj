@@ -1,11 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>User Management</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" rel="stylesheet">
+
 </head>
-<body>
-    <h1>This is User Management page</h1>
+<body class="bg-gray-50 text-gray-800">
+
+<div class="max-w-7xl mx-auto p-6">
+
+  <!-- HEADER -->
+  <div class="flex flex-col sm:flex-row justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-bold">User Management</h1>
+      <p class="text-gray-500 text-sm">Manage all user accounts in the system.</p>
+    </div>
+    <button onclick="openAddModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+      <i class="ph ph-plus"></i> Add New User
+    </button>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="mt-6 bg-white p-4 rounded-xl shadow flex flex-col lg:flex-row gap-4">
+    <input id="searchInput" oninput="renderUsers()"
+      class="border rounded-lg px-4 py-2 w-full"
+      placeholder="Search by name or email">
+
+    <select id="roleFilter" onchange="renderUsers()" class="border rounded-lg px-4 py-2">
+      <option value="">Role: All</option>
+      <option value="Admin">Admin</option>
+      <option value="Teacher">Teacher</option>
+      <option value="Student">Student</option>
+    </select>
+
+    <select id="statusFilter" onchange="renderUsers()" class="border rounded-lg px-4 py-2">
+      <option value="">Status: All</option>
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+    </select>
+  </div>
+
+  <!-- TABLE -->
+  <div class="hidden md:block mt-6 bg-white rounded-xl shadow overflow-x-auto">
+    <table class="w-full">
+      <thead class="bg-gray-50 text-sm text-gray-500">
+        <tr>
+          <th class="px-6 py-4 text-left">User</th>
+          <th class="px-6 py-4 text-left">Email</th>
+          <th class="px-6 py-4 text-left">Role</th>
+          <th class="px-6 py-4 text-left">Status</th>
+          <th class="px-6 py-4 text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody" class="divide-y"></tbody>
+    </table>
+  </div>
+
+  <!-- MOBILE -->
+  <div id="mobileCards" class="md:hidden mt-6 space-y-4"></div>
+
+</div>
+
+<!-- ADD USER MODAL -->
+<div id="addModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center">
+  <div class="bg-white w-full max-w-md p-6 rounded-xl">
+    <h2 class="text-lg font-bold mb-4">Add / Invite User</h2>
+
+    <input id="newName" placeholder="Full name" class="border w-full px-3 py-2 rounded-lg mb-3">
+    <input id="newEmail" placeholder="Email" class="border w-full px-3 py-2 rounded-lg mb-3">
+
+    <select id="newRole" class="border w-full px-3 py-2 rounded-lg mb-4">
+      <option>Admin</option>
+      <option>Teacher</option>
+      <option>Student</option>
+    </select>
+
+    <div class="flex justify-between">
+      <button onclick="closeAddModal()" class="border px-4 py-2 rounded-lg">Cancel</button>
+      <button onclick="addUser()" class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+        Add / Invite
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center">
+  <div class="bg-white w-full max-w-sm p-6 rounded-xl">
+    <h2 class="font-bold mb-4">Edit User</h2>
+
+    <select id="editRole" class="border w-full px-3 py-2 rounded-lg mb-4">
+      <option>Admin</option>
+      <option>Teacher</option>
+      <option>Student</option>
+    </select>
+
+    <div class="flex justify-between">
+      <button onclick="closeEditModal()" class="border px-4 py-2 rounded-lg">Cancel</button>
+      <button onclick="saveEdit()" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let users = [
+  {id:1,name:"Sarah Johnson",email:"sarah@example.com",role:"Admin",status:"Active"},
+  {id:2,name:"Michael Chen",email:"michael@example.com",role:"Teacher",status:"Active"},
+  {id:3,name:"Emily Rodriguez",email:"emily@example.com",role:"Student",status:"Active"},
+  {id:4,name:"Jessica Williams",email:"jessica@example.com",role:"Teacher",status:"Inactive"},
+];
+
+let editUserId = null;
+
+function renderUsers(){
+  const search = searchInput.value.toLowerCase();
+  const role = roleFilter.value;
+  const status = statusFilter.value;
+
+  let filtered = users.filter(u =>
+    (u.name.toLowerCase().includes(search) || u.email.toLowerCase().includes(search)) &&
+    (!role || u.role === role) &&
+    (!status || u.status === status)
+  );
+
+  tableBody.innerHTML = "";
+  mobileCards.innerHTML = "";
+
+  filtered.forEach(u=>{
+    tableBody.innerHTML += `
+      <tr>
+        <td class="px-6 py-4 font-medium">${u.name}</td>
+        <td class="px-6 py-4 text-gray-500">${u.email}</td>
+        <td class="px-6 py-4">${u.role}</td>
+        <td class="px-6 py-4">
+          <span class="px-3 py-1 rounded-full text-sm ${u.status==='Active'?'bg-green-100 text-green-700':'bg-gray-200'}">
+            ${u.status}
+          </span>
+        </td>
+        <td class="px-6 py-4 text-right space-x-3">
+          <i onclick="openEdit(${u.id})" class="ph ph-pencil cursor-pointer"></i>
+          <i onclick="removeUser(${u.id})" class="ph ph-trash cursor-pointer text-red-500"></i>
+        </td>
+      </tr>
+    `;
+
+    mobileCards.innerHTML += `
+      <div class="bg-white p-4 rounded-xl shadow">
+        <p class="font-semibold">${u.name}</p>
+        <p class="text-sm text-gray-500">${u.email}</p>
+        <div class="mt-2 flex justify-between text-sm">
+          <span>${u.role}</span>
+          <span class="px-3 py-1 rounded-full ${u.status==='Active'?'bg-green-100 text-green-700':'bg-gray-200'}">${u.status}</span>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function openAddModal(){ addModal.classList.remove("hidden"); addModal.classList.add("flex"); }
+function closeAddModal(){ addModal.classList.add("hidden"); }
+
+function addUser(){
+  if(!newName.value || !newEmail.value) return alert("Fill all fields");
+  users.unshift({
+    id:Date.now(),
+    name:newName.value,
+    email:newEmail.value,
+    role:newRole.value,
+    status:"Active"
+  });
+  closeAddModal();
+  renderUsers();
+}
+
+function openEdit(id){
+  editUserId = id;
+  editModal.classList.remove("hidden");
+  editModal.classList.add("flex");
+}
+
+function closeEditModal(){ editModal.classList.add("hidden"); }
+
+function saveEdit(){
+  const user = users.find(u=>u.id===editUserId);
+  user.role = editRole.value;
+  closeEditModal();
+  renderUsers();
+}
+
+function removeUser(id){
+  if(confirm("Remove this user?")){
+    users = users.filter(u=>u.id!==id);
+    renderUsers();
+  }
+}
+
+renderUsers();
+</script>
+
 </body>
 </html>
