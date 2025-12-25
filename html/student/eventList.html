@@ -1,325 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Even list and register</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Even list and register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: "#2A4759",
+          accent: "#F79B72",
+          light: "#EEEEEE",
+          muted: "#DDDDDD",
+        }
+      }
+    }
+  }
+</script>
 </head>
+
 <body class="bg-[#EEEEEE] font-roboto">
 
-<!-- NAVBAR -->
+  <!-- NAVBAR -->
     <nav class="bg-[#2A4759] w-full shadow-2xl">
         <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
-        <div class="text-[#F79B72] font-bold text-4xl">logo</div>
-        <div class="flex gap-2">
-            <button class="border border-[#F79B72] w-24 h-8 rounded-lg text-[#F79B72] font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:border-none">Log in</button>
-            <button class="bg-[#F79B72] w-24 h-8 rounded-lg text-white font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">Sign in</button>
-            <!-- <button><img src="icon/account_circle_24dp_F79B72_FILL0_wght400_GRAD0_opsz24.svg" class="w-30 h-30" alt=""></button> -->
-        </div>
+          <div class="text-[#F79B72] font-bold text-4xl">Tick</div>
+          <div class="flex items-center gap-6 text-light font-medium">
+              <a href="./studentAttendanceRecord.html" class="hover:text-accent transition">
+                Dashboard
+              </a>
+              <a href="./eventList.html" class="hover:text-accent transition">Event</a>
+              <i class="material-icons text-4xl text-accent cursor-pointer">account_circle</i>
+              <a href="../homePage.html">
+                <button class="w-24 h-8 bg-accent text-white rounded-lg duration-150 hover:bg-light hover:text-accent">
+                  Logout
+                </button>
+              </a>
+          </div>
 
         </div>
     </nav>
 
-<!-- page content -->
-<main class="max-w-[1440px] mx-auto px-4">
-  
-  <h1 class="mt-12 text-4xl font-bold">Events</h1>
+  <!-- PAGE CONTENT -->
+  <main class="max-w-[1440px] mx-auto px-4">
+    <h1 class="mt-12 text-4xl font-bold">Events</h1>
 
-  <nav class="mt-8 flex gap-8">
-    <button id="allTab" class="tab-btn font-bold border-b-4 border-[#F79B72]">
-      All Events
-    </button>
-
-    <button id="myTab" class="tab-btn text-slate-500 hover:text-black">
-      My Registered Events
-    </button>
-  </nav>
-  <div class="w-full h-px bg-gray-300 my-4"></div>
-
-  <div class="flex flex-row gap-4">
-  <div class=" relative flex-1 max-w-[438px]">
-  <!-- Search Icon -->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 pointer-events-none"
-    viewBox="0 -960 960 960"
-    fill="currentColor"
-  >
-    <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
-  </svg>
-
-  <!-- Input -->
-  <input type="search" class="w-full  rounded-lg p-3 pl-10  focus:outline-none" placeholder="Search by event name or keyword...">
-
-</div>
-  <button
-    class="relative h-12 px-2 pl-8 sm:pl-12 sm:px-6 rounded-lg bg-white font-bold border border-gray-300 hover:bg-gray-100"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-4 sm:w-5 text-gray-500 pointer-events-none"
-      viewBox="0 -960 960 960"
-      fill="currentColor"
-    >
-      <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
-    </svg>Category</button>
-    <button
-    class="relative h-12 px-4 pl-8 sm:pl-12 sm:px-6 rounded-lg bg-white font-bold border border-gray-300 hover:bg-gray-100"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-4 sm:w-5 text-gray-500 pointer-events-none"
-      viewBox="0 -960 960 960"
-      fill="currentColor"
-    >
-      <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
-    </svg>Data Range</button>
-</div>
-<!-- GRID -->
-  <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center">
-
-    <!-- CARD 1 -->
-    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
-     data-total="70"
-     data-left="15"
-     data-registered="false">
-
-      <div class="p-4 space-y-3">
-        <h2 class="font-semibold text-lg">Introduction to Machine Learning</h2>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">calendar_today</span>
-          October 26, 2026
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">schedule</span>
-          10:00 AM – 12:00 PM
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">location_on</span>
-          Cosmo Hall
-        </div>
-
-        <p class="text-sm text-gray-700">
-          Beginner-friendly workshop covering machine learning basics.
-        </p>
-
-        <div class="space-y-1">
-          <div class="seats-text flex justify-between text-xs font-medium"></div>
-          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div class="progress-bar h-full rounded-full transition-all"></div>
-          </div>
-        </div>
-
-        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
-          Register
+    <nav class="mt-8 flex gap-8">
+      <a href="./eventList.html">
+        <button id="allTab" class="tab-btn font-bold border-b-4 border-[#F79B72]">
+          All Events
         </button>
+      </a>
+      
+      <a href="./myRegisteredEvent.html">
+        <button id="myTab" class="tab-btn text-slate-500 hover:text-black">
+          My Registered Events
+        </button>
+      </a>
+    </nav>
+
+    <div class="w-full h-px bg-gray-300 my-4"></div>
+
+    <div class="flex flex-row gap-4">
+      <div class="relative flex-1 max-w-[438px]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 pointer-events-none" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/>
+        </svg>
+        <input type="search" class="w-full rounded-lg p-3 pl-10 focus:outline-none" placeholder="Search by event name or keyword...">
       </div>
+
+      <button class="relative h-12 px-2 pl-8 sm:pl-12 sm:px-6 rounded-lg bg-white font-bold border border-gray-300 hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-4 sm:w-5 text-gray-500 pointer-events-none" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+        </svg>
+        Category
+      </button>
+
+      <button class="relative h-12 px-4 pl-8 sm:pl-12 sm:px-6 rounded-lg bg-white font-bold border border-gray-300 hover:bg-gray-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-4 sm:w-5 text-gray-500 pointer-events-none" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
+        </svg>
+        Date Range
+      </button>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
-     data-total="70"
-     data-left="15"
-     data-registered="false">
+    <!-- GRID -->
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center">
 
-      <div class="p-4 space-y-3">
-        <h2 class="font-semibold text-lg">Campus Social Mixer</h2>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">calendar_today</span>
-          October 26, 2026
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">schedule</span>
-          9:00 AM – 12:00 PM
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">location_on</span>
-          Unicorn Hall
-        </div>
-
-        <p class="text-sm text-gray-700">
-          Meet new people, enjoy free food, and relax before midterms.
-        </p>
-
-        <div class="space-y-1">
-          <div class="seats-text flex justify-between text-xs font-medium"></div>
-          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div class="progress-bar h-full rounded-full transition-all"></div>
+      <!-- CARD 1 -->
+      <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition" data-total="70" data-left="15">
+        <div class="p-4 space-y-3">
+          <h2 class="font-semibold text-lg">Introduction to Machine Learning</h2>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">calendar_today</span>
+            October 26, 2026
           </div>
-        </div>
-
-        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
-          Register
-        </button>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
-     data-total="70"
-     data-left="15"
-     data-registered="false">
-
-      <div class="p-4 space-y-3">
-        <h2 class="font-semibold text-lg">Guest Lecture: The Future of AI</h2>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">calendar_today</span>
-          November 2, 2026
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">schedule</span>
-          8:00 AM – 11:30 PM
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">location_on</span>
-          A204, ITB
-        </div>
-
-        <p class="text-sm text-gray-700">
-          Dr. Evelyn Reed discusses AI trends and ethics.
-        </p>
-
-        <div class="space-y-1">
-          <div class="seats-text flex justify-between text-xs font-medium"></div>
-          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div class="progress-bar h-full rounded-full transition-all"></div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">schedule</span>
+            10:00 AM – 12:00 PM
           </div>
-        </div>
-
-        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
-          Register
-        </button>
-      </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
-     data-total="70"
-     data-left="15"
-     data-registered="false">
-
-      <div class="p-4 space-y-3">
-        <h2 class="font-semibold text-lg">Senior Project Showcase</h2>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">calendar_today</span>
-          November 5, 2026
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">schedule</span>
-          9:00 AM – 12:00 PM
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">location_on</span>
-          Cosmo Hall
-        </div>
-
-        <p class="text-sm text-gray-700">
-          Explore innovative senior projects and network with students.
-        </p>
-
-        <div class="space-y-1">
-          <div class="seats-text flex justify-between text-xs font-medium"></div>
-          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div class="progress-bar h-full rounded-full transition-all"></div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">location_on</span>
+            Cosmo Hall
           </div>
-        </div>
+          <p class="text-sm text-gray-700">
+            Beginner-friendly workshop covering machine learning basics.
+          </p>
 
-        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
-          Register
-        </button>
-      </div>
-    </div>
-
-    <!-- CARD 5 -->
-    <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition"
-     data-total="70"
-     data-left="15"
-     data-registered="false">
-
-      <div class="p-4 space-y-3">
-        <h2 class="font-semibold text-lg">Senior Project Showcase</h2>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">calendar_today</span>
-          November 5, 2026
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">schedule</span>
-          9:00 AM – 12:00 PM
-        </div>
-
-        <div class="flex items-center gap-2 text-xs text-gray-600">
-          <span class="material-icons-outlined text-sm">location_on</span>
-          Cosmo Hall
-        </div>
-
-        <p class="text-sm text-gray-700">
-          Explore innovative senior projects and network with students.
-        </p>
-
-        <div class="space-y-1">
-          <div class="seats-text flex justify-between text-xs font-medium"></div>
-          <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div class="progress-bar h-full rounded-full transition-all"></div>
+          <div class="space-y-1">
+            <div class="seats-text flex justify-between text-xs font-medium"></div>
+            <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="progress-bar h-full rounded-full transition-all"></div>
+            </div>
           </div>
+
+          <a href="./eventRegisterForm.html">
+            <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+              Register
+            </button>
+          </a>
         </div>
-
-        <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
-          Register
-        </button>
       </div>
+
+      <!-- CARD 2 -->
+      <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition" data-total="70" data-left="50">
+        <div class="p-4 space-y-3">
+          <h2 class="font-semibold text-lg">Campus Social Mixer</h2>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">calendar_today</span>
+            October 26, 2026
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">schedule</span>
+            9:00 AM – 12:00 PM
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">location_on</span>
+            Unicorn Hall
+          </div>
+          <p class="text-sm text-gray-700">
+            Meet new people, enjoy free food, and relax before midterms.
+          </p>
+
+          <div class="space-y-1">
+            <div class="seats-text flex justify-between text-xs font-medium"></div>
+            <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="progress-bar h-full rounded-full transition-all"></div>
+            </div>
+          </div>
+
+          <a href="./eventRegisterForm.html">
+            <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+              Register
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition" data-total="70" data-left="5">
+        <div class="p-4 space-y-3">
+          <h2 class="font-semibold text-lg">Guest Lecture: The Future of AI</h2>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">calendar_today</span>
+            November 2, 2026
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">schedule</span>
+            8:00 AM – 11:30 PM
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">location_on</span>
+            A204, ITB
+          </div>
+          <p class="text-sm text-gray-700">
+            Dr. Evelyn Reed discusses AI trends and ethics.
+          </p>
+
+          <div class="space-y-1">
+            <div class="seats-text flex justify-between text-xs font-medium"></div>
+            <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="progress-bar h-full rounded-full transition-all"></div>
+            </div>
+          </div>
+
+          <a href="./eventRegisterForm.html">
+            <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+              Register
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition" data-total="70" data-left="0">
+        <div class="p-4 space-y-3">
+          <h2 class="font-semibold text-lg">Senior Project Showcase</h2>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">calendar_today</span>
+            November 5, 2026
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">schedule</span>
+            9:00 AM – 12:00 PM
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">location_on</span>
+            Cosmo Hall
+          </div>
+          <p class="text-sm text-gray-700">
+            Explore innovative senior projects and network with students.
+          </p>
+
+          <div class="space-y-1">
+            <div class="seats-text flex justify-between text-xs font-medium"></div>
+            <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="progress-bar h-full rounded-full transition-all"></div>
+            </div>
+          </div>
+
+          <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+            Register
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="event-card w-[310px] bg-white rounded-xl shadow-md hover:shadow-lg transition" data-total="70" data-left="0">
+        <div class="p-4 space-y-3">
+          <h2 class="font-semibold text-lg">Senior Project Showcase</h2>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">calendar_today</span>
+            November 5, 2026
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">schedule</span>
+            9:00 AM – 12:00 PM
+          </div>
+          <div class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="material-icons-outlined text-sm">location_on</span>
+            Cosmo Hall
+          </div>
+          <p class="text-sm text-gray-700">
+            Explore innovative senior projects and network with students.
+          </p>
+
+          <div class="space-y-1">
+            <div class="seats-text flex justify-between text-xs font-medium"></div>
+            <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="progress-bar h-full rounded-full transition-all"></div>
+            </div>
+          </div>
+
+          <button class="register-btn w-full h-10 mt-3 rounded-lg font-medium transition">
+            Register
+          </button>
+        </div>
+      </div>
+
     </div>
+  </main>
 
-  </div>
-</main>
+  <!-- LOGIC -->
+  <script>
+    document.querySelectorAll(".event-card").forEach(card => {
+      const total = Number(card.dataset.total);
+      const left = Number(card.dataset.left);
+      const filled = ((total - left) / total) * 100;
 
-<!-- LOGIC -->
-<script>
-document.querySelectorAll('.event-card').forEach(card => {
-  const total = Number(card.dataset.total);
-  const left = Number(card.dataset.left);
-  const filled = ((total - left) / total) * 100;
+      const bar = card.querySelector(".progress-bar");
+      const text = card.querySelector(".seats-text");
+      const btn = card.querySelector(".register-btn");
 
-  const bar = card.querySelector('.progress-bar');
-  const text = card.querySelector('.seats-text');
-  const btn = card.querySelector('.register-btn');
+      bar.style.width = filled + "%";
 
-  bar.style.width = filled + '%';
-
-  if (left === 0) {
-    bar.classList.add('bg-gradient-to-r','from-red-400','to-red-600');
-    text.innerHTML = `<span class="text-red-600">No seats available</span><span>${total} total</span>`;
-    btn.textContent = 'Full';
-    btn.disabled = true;
-    btn.classList.add('bg-gray-300','text-gray-500','cursor-not-allowed');
-  } else if (left <= 10) {
-    bar.classList.add('bg-gradient-to-r','from-yellow-400','to-orange-500','animate-warning');
-    text.innerHTML = `<span class="text-orange-600">${left} seats left</span><span>${total} total</span>`;
-    btn.classList.add('bg-[#2A4759]','text-[#F79B72]','hover:bg-[#1f3644]');
-  } else {
-    bar.classList.add('bg-gradient-to-r','from-green-400','to-green-600');
-    text.innerHTML = `<span class="text-green-600">${left} seats left</span><span>${total} total</span>`;
-    btn.classList.add('bg-[#2A4759]','text-[#F79B72]','hover:bg-[#1f3644]');
-  }
-});
-
-
-</script>
+      if (left === 0) {
+        bar.classList.add("bg-gradient-to-r", "from-red-400", "to-red-600");
+        text.innerHTML = `<span class="text-red-600">No seats available</span><span>${total} total</span>`;
+        btn.textContent = "Full";
+        btn.disabled = true;
+        btn.classList.add("bg-gray-300", "text-gray-500", "cursor-not-allowed");
+      } else if (left <= 10) {
+        bar.classList.add("bg-gradient-to-r", "from-yellow-400", "to-orange-500");
+        text.innerHTML = `<span class="text-orange-600">${left} seats left</span><span>${total} total</span>`;
+        btn.classList.add("bg-[#2A4759]", "text-[#F79B72]", "hover:bg-[#1f3644]");
+      } else {
+        bar.classList.add("bg-gradient-to-r", "from-green-400", "to-green-600");
+        text.innerHTML = `<span class="text-green-600">${left} seats left</span><span>${total} total</span>`;
+        btn.classList.add("bg-[#2A4759]", "text-[#F79B72]", "hover:bg-[#1f3644]");
+      }
+    });
+  </script>
 
 </body>
 </html>

@@ -5,6 +5,20 @@
   <title>Student Attendance Record</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: "#2A4759",
+          accent: "#F79B72",
+          light: "#EEEEEE",
+          muted: "#DDDDDD",
+        }
+      }
+    }
+  }
+</script>
 </head>
 
 <body class="bg-[#eeeeee] text-gray-800">
@@ -12,12 +26,19 @@
 <!-- NAVIGATION BAR -->
     <nav class="bg-[#2A4759] w-full shadow-2xl">
         <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
-        <div class="text-[#F79B72] font-bold text-4xl">logo</div>
-        <div class="flex gap-2">
-            <button class="border border-[#F79B72] w-24 h-8 rounded-lg text-[#F79B72] font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:border-none">Log in</button>
-            <button class="bg-[#F79B72] w-24 h-8 rounded-lg text-white font-bold duration-200 ease-in-out hover:bg-[#eeeeee] hover:text-[#F79B72]">Sign in</button>
-            <!-- <button><img src="icon/account_circle_24dp_F79B72_FILL0_wght400_GRAD0_opsz24.svg" class="w-30 h-30" alt=""></button> -->
-        </div>
+          <div class="text-[#F79B72] font-bold text-4xl">Tick</div>
+          <div class="flex items-center gap-6 text-light font-medium">
+              <a href="./studentAttendanceRecord.html" class="hover:text-accent transition">
+                Dashboard
+              </a>
+              <a href="./eventList.html" class="hover:text-accent transition">Event</a>
+              <i class="material-icons text-4xl text-accent cursor-pointer">account_circle</i>
+              <a href="../homePage.html">
+                <button class="w-24 h-8 bg-accent text-white rounded-lg duration-150 hover:bg-light hover:text-accent">
+                  Logout
+                </button>
+              </a>
+          </div>
 
         </div>
     </nav>
@@ -38,16 +59,7 @@
   <h2 class="text-[#F79B72] font-semibold mb-3 text-lg">Filters</h2>
 
   <div class="bg-white p-4 sm:p-6 rounded-xl shadow">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 items-end">
-      
-      <div>
-        <label class="block text-sm font-semibold mb-2">Student ID</label>
-        <input
-          class="w-full bg-gray-100 px-4 py-3 rounded-lg"
-          value="STU123456"
-        />
-      </div>
-
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-end">
       <div>
         <label class="block text-sm font-semibold mb-2">Subject</label>
         <select class="w-full bg-gray-100 px-4 py-3 rounded-lg">

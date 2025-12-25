@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Event Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#2A4759",
+        accent: "#F79B72",
+        muted: "#DDDDDD",
+        light: "#EEEEEE",
+      }
+    }
+  }
+}
+</script>
+</head>
+
+<body class="bg-light text-primary">
+    <!-- NAVBAR -->
+    <nav class="bg-[#2A4759] w-full shadow-2xl">
+        <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
+          <div class="text-[#F79B72] font-bold text-4xl">Tick</div>
+          <div class="flex items-center gap-6 text-light font-medium">
+              <a href="./adminDashboard.html" class="hover:text-accent transition">
+                Dashboard
+              </a>
+              <a href="./eventReport.html">Event</a>
+              <a href="./classReport.html" class="hover:text-accent transition">Class</a>
+              <a href="./UserManagement.html" class="hover:text-accent transition">Users</a>
+              <i class="material-icons text-4xl text-accent cursor-pointer">account_circle</i>
+              <a href="../homePage.html">
+                <button class="w-24 h-8 bg-accent text-white rounded-lg duration-150 hover:bg-light hover:text-accent">
+                  Logout
+                </button>
+              </a>
+          </div>
+        </div>
+    </nav>
+
+<!-- PAGE -->
+<div class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+
+
+<!-- HEADER -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+  <div>
+    <h1 class="text-2xl md:text-3xl font-bold">Welcome back, Alex</h1>
+    <p class="opacity-70">Here's what's happening with your events today.</p>
+  </div>
+
+  <div class="flex gap-3">
+    <button class="flex items-center gap-2 px-4 py-2 border border-muted rounded-lg">
+      <span class="material-icons text-sm">qr_code_scanner</span>
+      Scan Ticket
+    </button>
+    <button class="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg hover:bg-primary transition">
+      <span class="material-icons text-sm">add</span>
+      Create New Event
+    </button>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+  <div class="bg-white border border-muted rounded-xl p-6 min-h-[140px]">
+    <p class="text-sm opacity-70">Total Registrations</p>
+    <p class="text-3xl font-bold mt-2">1,240</p>
+    <p class="text-sm text-accent mt-1">+12% vs last month</p>
+  </div>
+
+  <div class="bg-white border border-muted rounded-xl p-6 min-h-[140px]">
+    <p class="text-sm opacity-70">Checked In</p>
+    <p class="text-3xl font-bold mt-2">850</p>
+    <p class="text-sm text-accent mt-1">68% attendance rate</p>
+  </div>
+
+  <div class="bg-white border border-muted rounded-xl p-6 min-h-[140px]">
+    <p class="text-sm opacity-70">Upcoming Events</p>
+    <p class="text-3xl font-bold mt-2">3</p>
+    <p class="text-sm opacity-70 mt-1">Next: Annual Tech Meetup</p>
+  </div>
+
+</div>
+
+<!-- MAIN GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+<!-- LEFT -->
+<div class="lg:col-span-2 space-y-6">
+
+<!-- EVENT TABLE -->
+<div class="bg-white border border-muted rounded-xl overflow-hidden">
+  <div class="flex justify-between items-center p-4 border-b border-muted">
+    <h2 class="font-semibold">Event Management</h2>
+    <a href="#" class="text-accent text-sm">View All</a>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="bg-light text-left">
+        <tr>
+          <th class="p-4">Event Name</th>
+          <th class="p-4">Date</th>
+          <th class="p-4">Status</th>
+          <th class="p-4">Registered</th>
+          <th class="p-4 text-right"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y">
+        <tr>
+          <td class="p-4 font-medium">Annual Tech Meetup</td>
+          <td class="p-4">Oct 24, 2023</td>
+          <td class="p-4">
+            <span class="bg-accent/20 text-accent px-3 py-1 rounded-full text-xs">Active</span>
+          </td>
+          <td class="p-4">450 / 500</td>
+          <td class="p-4 text-right">
+            <span class="material-icons text-muted">more_vert</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="p-4 font-medium">Marketing Workshop</td>
+          <td class="p-4">Nov 01, 2023</td>
+          <td class="p-4">
+            <span class="bg-light px-3 py-1 rounded-full text-xs">Upcoming</span>
+          </td>
+          <td class="p-4">120 / 200</td>
+          <td class="p-4 text-right">
+            <span class="material-icons text-muted">more_vert</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="p-4 font-medium">Design Sprint 2023</td>
+          <td class="p-4">Sep 15, 2023</td>
+          <td class="p-4">
+            <span class="bg-muted px-3 py-1 rounded-full text-xs">Ended</span>
+          </td>
+          <td class="p-4">85 / 100</td>
+          <td class="p-4 text-right">
+            <span class="material-icons text-muted">more_vert</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ATTENDANCE TREND -->
+<div class="bg-white border border-muted rounded-xl p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="font-semibold">Attendance Trends</h2>
+    <span class="text-sm opacity-70">Last 7 Days</span>
+  </div>
+
+  <!-- SVG LINE -->
+  <svg viewBox="0 0 300 100" class="w-full h-32">
+    <polyline
+      fill="none"
+      stroke="#2A4759"
+      stroke-width="4"
+      points="0,60 40,20 80,50 120,30 160,70 200,20 240,60 280,30" />
+  </svg>
+
+  <div class="flex justify-between text-xs opacity-70 mt-2">
+    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span>
+    <span>Fri</span><span>Sat</span><span>Sun</span>
+  </div>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="space-y-6">
+
+<!-- QR -->
+<div class="bg-white border border-muted rounded-xl p-4">
+  <h2 class="font-semibold mb-2 flex items-center gap-2">
+    <span class="material-icons text-accent">qr_code</span>
+    QR Generator
+  </h2>
+  <p class="text-sm opacity-70 mb-4">
+    Generate a unique check-in code for your event signage.
+  </p>
+
+  <select class="w-full border border-muted rounded-lg px-3 py-2 mb-4">
+    <option>Annual Tech Meetup</option>
+  </select>
+
+  <div class="h-40 bg-light rounded-lg flex items-center justify-center mb-4">
+    <span class="material-icons text-5xl text-muted">qr_code_2</span>
+  </div>
+
+  <button class="w-full bg-accent text-white py-2 rounded-lg">
+    Download PNG
+  </button>
+</div>
+
+<!-- ACTIONS -->
+<div class="bg-white border border-muted rounded-xl p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="font-semibold flex items-center gap-2">
+      <span class="material-icons text-accent">notifications</span>
+      Action Required
+    </h2>
+    <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">3</span>
+  </div>
+
+  <div class="space-y-4 text-sm">
+    <div>
+      <p class="font-medium">Verification Needed</p>
+      <p class="opacity-70">3 attendees flagged credentials.</p>
+    </div>
+
+    <div>
+      <p class="font-medium">Capacity Alert</p>
+      <p class="opacity-70">Annual Tech Meetup is at 90% capacity.</p>
+    </div>
+
+    <div>
+      <p class="font-medium">Event Published</p>
+      <p class="opacity-70">Marketing Workshop is live.</p>
+    </div>
+  </div>
+
+  <button class="mt-4 text-accent text-sm w-full text-center">
+    Mark all as read
+  </button>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

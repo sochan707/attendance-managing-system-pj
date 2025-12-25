@@ -7,9 +7,45 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" rel="stylesheet">
-
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2A4759",
+            accent: "#F79B72",
+            light: "#EEEEEE",
+            muted: "#DDDDDD",
+          }
+        }
+      }
+    }
+  </script>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
+    <!-- NAVBAR -->
+    <nav class="bg-[#2A4759] w-full shadow-2xl">
+        <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
+          <div class="text-[#F79B72] font-bold text-4xl">Tick</div>
+          <div class="flex items-center gap-6 text-light font-medium">
+              <a href="./adminDashboard.html" class="hover:text-accent transition">
+                Dashboard
+              </a>
+              <a href="./eventReport.html">Event</a>
+              <a href="./classReport.html" class="hover:text-accent transition">Class</a>
+              <a href="./UserManagement.html" class="hover:text-accent transition">Users</a>
+              <i class="material-icons text-4xl text-accent cursor-pointer">account_circle</i>
+              <a href="../homePage.html">
+                <button class="w-24 h-8 bg-accent text-white rounded-lg duration-150 hover:bg-light hover:text-accent">
+                  Logout
+                </button>
+              </a>
+          </div>
+        </div>
+    </nav>
 
 <div class="max-w-7xl mx-auto p-6">
 
@@ -19,7 +55,7 @@
       <h1 class="text-2xl font-bold">User Management</h1>
       <p class="text-gray-500 text-sm">Manage all user accounts in the system.</p>
     </div>
-    <button onclick="openAddModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+    <button onclick="openAddModal()" class="bg-accent text-white px-4 py-2 rounded-lg flex items-center gap-2">
       <i class="ph ph-plus"></i> Add New User
     </button>
   </div>
@@ -68,7 +104,7 @@
 <!-- ADD USER MODAL -->
 <div id="addModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center">
   <div class="bg-white w-full max-w-md p-6 rounded-xl">
-    <h2 class="text-lg font-bold mb-4">Add / Invite User</h2>
+    <h2 class="text-lg font-bold mb-4">Add User</h2>
 
     <input id="newName" placeholder="Full name" class="border w-full px-3 py-2 rounded-lg mb-3">
     <input id="newEmail" placeholder="Email" class="border w-full px-3 py-2 rounded-lg mb-3">
@@ -81,7 +117,7 @@
 
     <div class="flex justify-between">
       <button onclick="closeAddModal()" class="border px-4 py-2 rounded-lg">Cancel</button>
-      <button onclick="addUser()" class="bg-blue-600 text-white px-4 py-2 rounded-lg">
+      <button onclick="addUser()" class="bg-accent text-white px-4 py-2 rounded-lg">
         Add / Invite
       </button>
     </div>
@@ -101,7 +137,7 @@
 
     <div class="flex justify-between">
       <button onclick="closeEditModal()" class="border px-4 py-2 rounded-lg">Cancel</button>
-      <button onclick="saveEdit()" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Save</button>
+      <button onclick="saveEdit()" class="bg-accent text-white px-4 py-2 rounded-lg">Save</button>
     </div>
   </div>
 </div>

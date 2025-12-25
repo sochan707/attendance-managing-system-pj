@@ -7,21 +7,45 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2A4759",
+            accent: "#F79B72",
+            light: "#EEEEEE",
+            muted: "#DDDDDD",
+          }
+        }
+      }
+    }
+  </script>
   
 </head>
 
 <body class="bg-gray-100 font-sans">
 
-  <!-- Navbar -->
-  <header class="bg-slate-700 text-white px-4 sm:px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <span class="text-orange-400 text-xl">☰</span>
-      <span class="font-bold text-lg hidden sm:block">Logo</span>
-    </div>
-    <div class="w-8 h-8 sm:w-9 sm:h-9 bg-orange-300 rounded-full flex items-center justify-center">
-      👤
-    </div>
-  </header>
+    <!-- NAVBAR -->
+    <nav class="bg-[#2A4759] w-full shadow-2xl">
+        <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
+          <div class="text-[#F79B72] font-bold text-4xl">Tick</div>
+          <div class="flex items-center gap-6 text-light font-medium">
+              <a href="./adminDashboard.html" class="hover:text-accent transition">
+                Dashboard
+              </a>
+              <a href="./eventReport.html">Event</a>
+              <a href="./classReport.html" class="hover:text-accent transition">Class</a>
+              <a href="./UserManagement.html" class="hover:text-accent transition">Users</a>
+              <i class="material-icons text-4xl text-accent cursor-pointer">account_circle</i>
+              <a href="../homePage.html">
+                <button class="w-24 h-8 bg-accent text-white rounded-lg duration-150 hover:bg-light hover:text-accent">
+                  Logout
+                </button>
+              </a>
+          </div>
+        </div>
+    </nav>
 
   <!-- Main -->
   <main class="p-4 sm:p-6 max-w-7xl mx-auto">
@@ -53,31 +77,58 @@
     </section>
 
     <!-- Quick Actions -->
-    <h2 class="text-orange-400 font-semibold mb-4 text-sm sm:text-base">
-      Quick Action
-    </h2>
+<h2 class="text-orange-400 font-semibold mb-4 text-sm sm:text-base">
+  Quick Action
+</h2>
 
-    <section class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
-        <i class="material-icons">group_add</i>
-        <span class="mt-2 text-sm sm:text-base font-semibold">Manage Users</span>
-      </button>
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+  
+  <!-- Card 1 -->
+  <a href="./UserManagement.html"
+     class="bg-slate-700 text-white rounded-lg h-36 sm:h-40
+            flex flex-col items-center justify-center
+            hover:bg-slate-800 transition">
+    <i class="material-icons text-3xl">group_add</i>
+    <span class="mt-2 text-sm sm:text-base font-semibold text-center">
+      Manage Users
+    </span>
+  </a>
 
-      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
-        <i class="material-icons">add_circle</i>
-        <span class="mt-2 text-sm sm:text-base font-semibold">Create Event</span>
-      </button>
+  <!-- Card 2 -->
+  <a href="./createEvent.html"
+     class="bg-slate-700 text-white rounded-lg h-36 sm:h-40
+            flex flex-col items-center justify-center
+            hover:bg-slate-800 transition">
+    <i class="material-icons text-3xl">add_circle</i>
+    <span class="mt-2 text-sm sm:text-base font-semibold text-center">
+      Create Event
+    </span>
+  </a>
 
-      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
-        <i class="material-icons">assignment_add</i>
-        <span class="mt-2 text-sm sm:text-base font-semibold">Manage Class</span>
-      </button>
+  <!-- Card 3 -->
+  <a href="./addClass.html"
+     class="bg-slate-700 text-white rounded-lg h-36 sm:h-40
+            flex flex-col items-center justify-center
+            hover:bg-slate-800 transition">
+    <i class="material-icons text-3xl">assignment_add</i>
+    <span class="mt-2 text-sm sm:text-base font-semibold text-center">
+      Add Class
+    </span>
+  </a>
 
-      <button class="bg-slate-700 text-white rounded-lg py-4 sm:py-6 flex flex-col items-center hover:bg-slate-800 transition">
-        <i class="material-icons">file_copy</i>
-        <span class="mt-2 text-sm sm:text-base font-semibold">Generate Report</span>
-      </button>
-    </section>
+  <!-- Card 4 -->
+  <a href="#"
+     class="bg-slate-700 text-white rounded-lg h-36 sm:h-40
+            flex flex-col items-center justify-center
+            hover:bg-slate-800 transition">
+    <i class="material-icons text-3xl">file_copy</i>
+    <span class="mt-2 text-sm sm:text-base font-semibold text-center">
+      Generate Report
+    </span>
+  </a>
+
+</section>
+
 
     <!-- Chart + Activity -->
     <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -99,7 +150,7 @@
         </div>
 
         <div class="h-52 sm:h-64 bg-gray-200 rounded flex items-center justify-center text-gray-500 text-sm">
-          Chart Area
+          <img class="h-52 sm:h-64 w-full" src="../../pic/Screenshot 2025-12-25 at 8.50.55 PM.png" alt="">
         </div>
       </div>
 

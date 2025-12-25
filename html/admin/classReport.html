@@ -5,101 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Attendance Reports</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2A4759",
+            accent: "#F79B72",
+            light: "#EEEEEE",
+            muted: "#DDDDDD",
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
 <body class="bg-[#EEEEEE] font-roboto">
 
-<!-- header -->
-<header class="bg-[#2A4759] fixed top-0 w-full z-50 shadow-2xl">
-  <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
-    
-    <div class="text-[#F79B72] font-bold text-xl">logo</div>
-
-    <button class="sm:hidden text-2xl text-[#F79B72] ">☰</button>
-
-    <nav class=" hidden sm:flex items-center gap-2 font-bold text-xs text-[#F79B72]">
-      <button class="w-24 h-8 bg-[#F79B72] text-white rounded-lg hover:text-black hover:bg-white">
-        Sign out
-      </button>
-      <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#F79B72"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+  <!-- NAVBAR -->
+    <nav class="bg-[#2A4759] w-full shadow-2xl">
+        <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
+          <div class="text-[#F79B72] font-bold text-4xl">Tick</div>
+          <div class="flex items-center gap-6 text-light font-medium">
+              <a href="./adminDashboard.html" class="hover:text-accent transition">
+                Dashboard
+              </a>
+              <a href="./eventReport.html">Event</a>
+              <a href="./classReport.html" class="hover:text-accent transition">Class</a>
+              <a href="./UserManagement.html" class="hover:text-accent transition">Users</a>
+              <i class="material-icons text-4xl text-accent cursor-pointer">account_circle</i>
+              <a href="../homePage.html">
+                <button class="w-24 h-8 bg-accent text-white rounded-lg duration-150 hover:bg-light hover:text-accent">
+                  Logout
+                </button>
+              </a>
+          </div>
+        </div>
     </nav>
-
-  </div>
-</header>
 
   <!-- Main Layout -->
     <!-- Header -->
-      <div class="ml-6 mt-6 p-12 mb-4">
-        <h1 class="text-2xl font-bold">Reports</h1>
+      <div class="ml-6 mt-8 px-12 pb-0">
+        <h1 class="text-4xl font-bold mb-4">Reports</h1>
         <p class="text-gray-500">
           Generate detailed attendance reports for classes, students, and events.
         </p>
       </div>
-  <main class="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
-    
-    <!-- Left -->
-    <aside class="bg-slate-700 text-white rounded-lg p-5 space-y-6">
-      <h3 class="font-semibold text-lg">Report Type Selection</h3>
 
-    <div class="space-y-3">
-    <label
-        class="block w-full cursor-pointer p-4 rounded-md border border-[#F79B72]
-            hover:bg-slate-600 transition">
-        <div class="flex items-center gap-3">
-        <input type="radio" name="reportType" class="accent-[#F79B72]" checked/>
-        <p class="font-medium text-white">Class attendance</p>
-        </div>
-        <p class="ml-7 text-sm text-gray-300">View attendance for an entire class.</p>
-    </label>
-    </div>
-        <div class="space-y-3">
-    <label
-        class="block w-full cursor-pointer p-4 rounded-md border border-[#F79B72]
-            hover:bg-slate-600 transition">
-        <div class="flex items-center gap-3">
-        <input type="radio" name="reportType" class="accent-[#F79B72]" checked/>
-        <p class="font-medium text-white">Student attendance</p>
-        </div>
-        <p class="ml-7 text-sm text-gray-300">View attendance for an single student.</p>
-    </label>
-    </div>
-        <div class="space-y-3">
-    <label
-        class="block w-full cursor-pointer p-4 rounded-md border border-[#F79B72]
-            hover:bg-slate-600 transition">
-        <div class="flex items-center gap-3">
-        <input type="radio" name="reportType" class="accent-[#F79B72]" checked/>
-        <p class="font-medium text-white">Event attendance</p>
-        </div>
-        <p class="ml-7 text-sm text-gray-300">View attendance for a specific event.</p>
-    </label>
-    </div>
-
-
-    <div>
-        <h2 class="font-bold text-[#F79B72] mb-2">Filter</h2>
-        <label class="block mb-2 text-sm">Class</label>
-        <select class="w-full p-2 rounded text-gray-800">
-          <option>Select a class</option>
-          <option>Grade 10A</option>
-          <option>Grade 10B</option>
-        </select>
-      </div>
-
-
-      <div>
-        <label for="reportdate" class="block mb-2 text-sm">Date Range</label>
-        <input type="date"
-          value="Jan 1, 2025 - Mar 31, 2025" id="reportdate"
-          class="w-full p-2 rounded text-gray-800"/>
-      </div>
-      <div class="mb-4">
-        <button class="w-full bg-[#F79B72] hover:bg-orange-500 text-white py-2 rounded-md">
-          Generate Report
-        </div>
-    </aside>
-
-    <!-- right -->
+  <main class="max-w-[1420px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
     <section class="lg:col-span-3 space-y-6">
       <!-- Filters -->
       <div class="bg-white rounded-lg p-5 grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
@@ -153,7 +108,7 @@
         <div class="bg-white rounded-lg p-4 h-64 flex items-center justify-center">
           <img src="../../pic/pie-chart.png" class="w-56 h-52" alt="">
         </div>
-        
+
       </div>
 
       <!-- Table -->

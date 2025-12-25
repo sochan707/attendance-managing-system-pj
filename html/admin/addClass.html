@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create New Class</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#2A4759",
+        accent: "#F79B72",
+        muted: "#DDDDDD",
+        light: "#EEEEEE",
+      }
+    }
+  }
+}
+</script>
+</head>
+
+<body class="bg-gray-100 text-primary">
+    <!-- NAVBAR -->
+    <nav class="bg-[#2A4759] w-full shadow-2xl">
+        <div class="max-w-[1440px] mx-auto flex flex-row justify-between items-center px-4 py-4">
+          <div class="text-[#F79B72] font-bold text-4xl">Tick</div>
+          <div class="flex items-center gap-6 text-light font-medium">
+              <a href="./adminDashboard.html" class="hover:text-accent transition">
+                Dashboard
+              </a>
+              <a href="./eventReport.html">Event</a>
+              <a href="./classReport.html" class="hover:text-accent transition">Class</a>
+              <a href="./UserManagement.html" class="hover:text-accent transition">Users</a>
+              <i class="material-icons text-4xl text-accent cursor-pointer">account_circle</i>
+              <a href="../homePage.html">
+                <button class="w-24 h-8 bg-accent text-white rounded-lg duration-150 hover:bg-light hover:text-accent">
+                  Logout
+                </button>
+              </a>
+          </div>
+        </div>
+    </nav>
+
+<div class="max-w-[1450px] mx-auto px-4 sm:px-6 py-6">
+
+<!-- HEADER -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+  <div>
+    <h1 class="text-2xl sm:text-3xl font-bold">Create New Class</h1>
+    <p class="opacity-70 text-sm sm:text-base">
+      Enter class details and schedule information below.
+    </p>
+  </div>
+
+  <div class="flex gap-3 self-start sm:self-auto">
+    <button class="px-4 py-2 border border-muted rounded-lg">
+      Cancel
+    </button>
+    <button class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-light hover:text-accent transition">
+      Create Class
+    </button>
+  </div>
+</div>
+
+<!-- CLASS DETAILS -->
+<div class="bg-white rounded-xl p-4 sm:p-6 shadow mb-6">
+  <h2 class="font-semibold text-lg mb-4">Class Details</h2>
+
+  <div class="space-y-4">
+    <input class="w-full border border-muted rounded-lg px-4 py-2"
+      placeholder="Class Name (e.g. Advanced Algebra)">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input class="border border-muted rounded-lg px-4 py-2"
+        placeholder="Class ID (e.g. ALG-101)">
+      <input class="border border-muted rounded-lg px-4 py-2"
+        placeholder="Subject (e.g. Mathematics)">
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <select class="border border-muted rounded-lg px-4 py-2">
+        <option>Select grade</option>
+        <option>Grade 9</option>
+        <option>Grade 10</option>
+        <option>Grade 11</option>
+      </select>
+
+      <select class="border border-muted rounded-lg px-4 py-2">
+        <option>Select semester</option>
+        <option>Semester 1</option>
+        <option>Semester 2</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- LOGISTICS -->
+<div class="bg-white rounded-xl p-4 sm:p-6 shadow">
+  <h2 class="font-semibold text-lg mb-4">Logistics</h2>
+
+  <!-- DAYS -->
+  <p class="mb-2 font-medium">Schedule Days</p>
+  <div class="flex flex-wrap gap-2 mb-6">
+    <button onclick="toggleDay('Mon')" class="day-btn">M</button>
+    <button onclick="toggleDay('Tue')" class="day-btn">T</button>
+    <button onclick="toggleDay('Wed')" class="day-btn">W</button>
+    <button onclick="toggleDay('Thu')" class="day-btn">Th</button>
+    <button onclick="toggleDay('Fri')" class="day-btn">F</button>
+  </div>
+
+  <!-- TIME PER DAY -->
+  <div id="timeSlots" class="space-y-4"></div>
+
+  <!-- TEACHER -->
+  <div class="mt-6">
+    <label class="block mb-2 font-medium">Assign Teacher</label>
+    <input class="w-full border border-muted rounded-lg px-4 py-2"
+      placeholder="Search for a teacher...">
+  </div>
+
+  <!-- STUDENT LIMIT -->
+  <div class="mt-6">
+    <div class="flex justify-between mb-2 text-sm sm:text-base">
+      <label class="font-medium">Student Limit</label>
+      <span id="limitValue" class="text-accent font-semibold">25</span>
+    </div>
+    <input type="range" min="1" max="35" value="25"
+      oninput="limitValue.textContent=this.value"
+      class="w-full accent-accent">
+  </div>
+</div>
+
+</div>
+
+<script>
+const selectedDays = new Set();
+
+function toggleDay(day) {
+  selectedDays.has(day) ? selectedDays.delete(day) : selectedDays.add(day);
+  renderTimeSlots();
+}
+
+function renderTimeSlots() {
+  const container = document.getElementById("timeSlots");
+  container.innerHTML = "";
+
+  selectedDays.forEach(day => {
+    container.innerHTML += `
+      <div class="border border-muted rounded-lg p-4">
+        <p class="font-medium mb-3">${day}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input type="time" class="border border-muted rounded-lg px-3 py-2">
+          <input type="time" class="border border-muted rounded-lg px-3 py-2">
+        </div>
+      </div>
+    `;
+  });
+
+  document.querySelectorAll(".day-btn").forEach(btn => {
+    const map = {M:"Mon",T:"Tue",W:"Wed",Th:"Thu",F:"Fri"};
+    btn.classList.toggle("bg-accent text-white", selectedDays.has(map[btn.textContent]));
+  });
+}
+</script>
+
+<style>
+.day-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1px solid #DDDDDD;
+  background: #EEEEEE;
+  font-weight: 600;
+}
+</style>
+
+</body>
+</html>
