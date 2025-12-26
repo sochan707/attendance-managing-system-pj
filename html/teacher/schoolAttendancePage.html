@@ -5,6 +5,21 @@
   <title>School Attendance</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: "#2A4759",
+          accent: "#F79B72",
+          light: "#EEEEEE",
+          muted: "#DDDDDD",
+        }
+      }
+    }
+  }
+</script>
+
 </head>
 
 <body class="bg-gray-100 text-gray-800 min-h-screen">
@@ -18,11 +33,11 @@
           </div>
           
           <!-- right -->
-          <div class="flex gap-2 items-center mr-6">
-            <a href="./teacherDashboard.html" class="hover:text-accent transition">
+          <div class="flex gap-6 items-center mr-6">
+            <a href="./teacherDashboard.html" class="hover:text-accent transition text-light">
               Dashboard
             </a>
-              <a href="./chooseClassPage.html">Classes</a>
+              <a class="text-light hover:text-accent" href="./chooseClassPage.html">Classes</a>
               <i class="material-icons text-4xl text-[#F79B72]">account_circle</i>
           </div>
 
